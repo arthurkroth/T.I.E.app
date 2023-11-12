@@ -12,8 +12,11 @@ public class FitGUI extends javax.swing.JFrame {
     /**
      * Creates new form NutritionGUI
      */
-    public FitGUI() {
+    private UserGUI userGUI;
+    
+    public FitGUI(UserGUI userGUI) {
         initComponents();
+        this.userGUI = userGUI;
     }
 
     /**
@@ -44,6 +47,11 @@ public class FitGUI extends javax.swing.JFrame {
         jLabel10.setText("T.I.E Fit");
 
         btnMainMenu.setText("Menu");
+        btnMainMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMainMenuActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Hours Exercised:");
 
@@ -55,7 +63,6 @@ public class FitGUI extends javax.swing.JFrame {
 
         btnCalculateFit.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         btnCalculateFit.setText("Calculate");
-        btnCalculateFit.setLocation(new java.awt.Point(0, 0));
 
         cmbHealthGoal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Muscle Gain", "Fat Loss", "Body Maintenance" }));
         cmbHealthGoal.addActionListener(new java.awt.event.ActionListener() {
@@ -83,24 +90,19 @@ public class FitGUI extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
                                     .addComponent(jLabel1))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(txtHoursExercised, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(80, 80, 80))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(118, 118, 118)
-                                        .addComponent(txtHoursOutside, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 80, Short.MAX_VALUE))))
+                                    .addComponent(txtHoursOutside, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtHoursExercised, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel4))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtStepsTaken, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cmbHealthGoal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(61, 61, 61))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(cmbHealthGoal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtStepsTaken, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(61, 61, 61))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(57, 57, 57)
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -148,6 +150,16 @@ public class FitGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbHealthGoalActionPerformed
 
+    private void btnMainMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMainMenuActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        
+        if(userGUI != null){
+            userGUI.setVisible(true);
+            userGUI.setLocationRelativeTo(null);
+        }
+    }//GEN-LAST:event_btnMainMenuActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -181,7 +193,6 @@ public class FitGUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FitGUI().setVisible(true);
             }
         });
     }

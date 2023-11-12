@@ -11,10 +11,14 @@ public class HealthGUI extends javax.swing.JFrame {
 
     /**
      * Creates new form HealthGUI
-     */
-    public HealthGUI() {
+     */  
+    private UserGUI userGUI;
+    
+    public HealthGUI(UserGUI userGUI) {
         initComponents();
+        this.userGUI = userGUI;
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -49,6 +53,11 @@ public class HealthGUI extends javax.swing.JFrame {
         jLabel10.setText("T.I.E Health");
 
         btnMainMenu.setText("Menu");
+        btnMainMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMainMenuActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Alcohol Consumed:");
 
@@ -71,7 +80,6 @@ public class HealthGUI extends javax.swing.JFrame {
 
         btcCalculateHealth.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         btcCalculateHealth.setText("Calculate");
-        btcCalculateHealth.setLocation(new java.awt.Point(0, 0));
 
         jLabel5.setFont(new java.awt.Font("Helvetica Neue", 0, 10)); // NOI18N
         jLabel5.setText("*Daily amounts");
@@ -151,9 +159,9 @@ public class HealthGUI extends javax.swing.JFrame {
                             .addComponent(txtSleepPerDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8))
                         .addGap(21, 21, 21)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(cmbSmokeYes, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cmbSmokeYes, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cmbSmokeNo))
                     .addGroup(layout.createSequentialGroup()
@@ -171,6 +179,16 @@ public class HealthGUI extends javax.swing.JFrame {
     private void cmbSmokeNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSmokeNoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbSmokeNoActionPerformed
+
+    private void btnMainMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMainMenuActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        
+        if(userGUI != null){
+            userGUI.setVisible(true);
+            userGUI.setLocationRelativeTo(null);
+        }
+    }//GEN-LAST:event_btnMainMenuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -202,7 +220,7 @@ public class HealthGUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new HealthGUI().setVisible(true);
+                
             }
         });
     }

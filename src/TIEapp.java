@@ -14,7 +14,9 @@ public class TIEapp {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        System.out.println("Test");
+        UserGUI usr = new UserGUI();
+        usr.setVisible(true);
+        usr.setLocationRelativeTo(null);
     }
     
 }

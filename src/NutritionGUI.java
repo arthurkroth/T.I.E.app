@@ -12,8 +12,11 @@ public class NutritionGUI extends javax.swing.JFrame {
     /**
      * Creates new form FitGUI
      */
-    public NutritionGUI() {
+    private UserGUI userGUI;
+    
+    public NutritionGUI(UserGUI userGUI) {
         initComponents();
+        this.userGUI = userGUI;
     }
 
     /**
@@ -59,6 +62,11 @@ public class NutritionGUI extends javax.swing.JFrame {
         btnCalculateNutrition.setText("Calculate");
 
         btnMainMenu.setText("Menu");
+        btnMainMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMainMenuActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText("Burned Calories:");
 
@@ -163,6 +171,16 @@ public class NutritionGUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnMainMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMainMenuActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        
+        if(userGUI != null){
+            userGUI.setVisible(true);
+            userGUI.setLocationRelativeTo(null);
+        }
+    }//GEN-LAST:event_btnMainMenuActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -194,7 +212,6 @@ public class NutritionGUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NutritionGUI().setVisible(true);
             }
         });
     }
