@@ -8,7 +8,7 @@
  * @author ciano
  */
 public class BuddyUpGUI extends javax.swing.JFrame {
-
+    private UserGUI userGUI;
     /**
      * Creates new form BuddyUpGUI
      */

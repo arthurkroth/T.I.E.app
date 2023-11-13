@@ -8,7 +8,7 @@
  * @author ciano
  */
 public class SupportGUI extends javax.swing.JFrame {
-
+    private UserGUI userGUI;
     /**
      * Creates new form SupportGUI
      */

@@ -8,7 +8,7 @@
  * @author ciano
  */
 public class ResourcesGUI extends javax.swing.JFrame {
-
+    private UserGUI userGUI;
     /**
      * Creates new form ResourcesGUI
      */
