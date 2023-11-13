@@ -75,6 +75,11 @@ public class UserGUI extends javax.swing.JFrame {
         jLabel6.setText("Fitness Level:");
 
         cmbUserFitnessLevel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Beginner", "Intermediate", "Expert" }));
+        cmbUserFitnessLevel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbUserFitnessLevelActionPerformed(evt);
+            }
+        });
 
         btnSaveUserInfo.setText("Save");
 
@@ -271,6 +276,10 @@ public class UserGUI extends javax.swing.JFrame {
         
         this.setVisible(false);
     }//GEN-LAST:event_btnFitSectionActionPerformed
+
+    private void cmbUserFitnessLevelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbUserFitnessLevelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbUserFitnessLevelActionPerformed
 
     /**
      * @param args the command line arguments
