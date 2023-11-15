@@ -18,6 +18,7 @@ public class UserGUI extends javax.swing.JFrame {
      */
     public UserGUI() {
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(255, 255, 255));
     }
     
     
