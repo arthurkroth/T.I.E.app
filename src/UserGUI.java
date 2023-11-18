@@ -116,9 +116,19 @@ public class UserGUI extends javax.swing.JFrame {
 
         btnMoodSection.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btnMoodSection.setText("Mood");
+        btnMoodSection.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMoodSectionActionPerformed(evt);
+            }
+        });
 
         btnStressSection.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btnStressSection.setText("Stress");
+        btnStressSection.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStressSectionActionPerformed(evt);
+            }
+        });
 
         btnBuddyUpSection.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btnBuddyUpSection.setText("BuddyUp");
@@ -133,6 +143,11 @@ public class UserGUI extends javax.swing.JFrame {
 
         btnMoodImprovementPlan.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btnMoodImprovementPlan.setText("Mood Improovement");
+        btnMoodImprovementPlan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMoodImprovementPlanActionPerformed(evt);
+            }
+        });
 
         jLabel7.setText("kg");
 
@@ -182,18 +197,17 @@ public class UserGUI extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(46, 46, 46)
-                                        .addComponent(cmbUserFitnessLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(txtUserHeight, javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(txtUserAge, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addComponent(txtUserWeight, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addGroup(layout.createSequentialGroup()
                                         .addGap(46, 46, 46)
-                                        .addComponent(txtUserAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(cmbUserFitnessLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtUserAddress, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel7)
@@ -291,6 +305,33 @@ public class UserGUI extends javax.swing.JFrame {
     private void cmbUserFitnessLevelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbUserFitnessLevelActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbUserFitnessLevelActionPerformed
+
+    private void btnMoodSectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoodSectionActionPerformed
+        // TODO add your handling code here:
+        MoodGUI mood = new MoodGUI(this);
+        mood.setVisible(true);
+        mood.setLocationRelativeTo(null);
+        
+        this.setVisible(false);
+    }//GEN-LAST:event_btnMoodSectionActionPerformed
+
+    private void btnStressSectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStressSectionActionPerformed
+        // TODO add your handling code here:
+        StressGUI stress = new StressGUI(this);
+        stress.setVisible(true);
+        stress.setLocationRelativeTo(null);
+        
+        this.setVisible(false);
+    }//GEN-LAST:event_btnStressSectionActionPerformed
+
+    private void btnMoodImprovementPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoodImprovementPlanActionPerformed
+        // TODO add your handling code here:
+        MoodImprovementPlanGUI moodImprove = new MoodImprovementPlanGUI(this);
+        moodImprove.setVisible(true);
+        moodImprove.setLocationRelativeTo(null);
+        
+        this.setVisible(false);
+    }//GEN-LAST:event_btnMoodImprovementPlanActionPerformed
 
     /**
      * @param args the command line arguments
