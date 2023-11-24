@@ -28,17 +28,22 @@ public class MoodGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel5 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         btnMainMenu = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         moodLevel = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
         jLabel3 = new javax.swing.JLabel();
         jRadioButton3 = new javax.swing.JRadioButton();
         jRadioButton4 = new javax.swing.JRadioButton();
         jLabel4 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        unitsOfAlcohol = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        hoursInNature = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+
+        jLabel5.setText("jLabel5");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -54,12 +59,6 @@ public class MoodGUI extends javax.swing.JFrame {
 
         jLabel1.setText("On a a scale of 1 to 10 inclusive, Please rate your daily Mood");
 
-        jLabel2.setText("Do you drink alcohol?");
-
-        jRadioButton1.setText("Yes");
-
-        jRadioButton2.setText("No");
-
         jLabel3.setText("Do you socialise regurlaly?");
 
         jRadioButton3.setText("Yes");
@@ -68,35 +67,49 @@ public class MoodGUI extends javax.swing.JFrame {
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Smiley.jpg"))); // NOI18N
 
+        jLabel6.setText("How Many units of alcohol would you consume in a day");
+
+        jLabel2.setText("How many hours would you spend out in nature each day");
+
+        jButton1.setText("Generate Tips");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(47, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2))
-                        .addGap(109, 109, 109)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel10)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jRadioButton1)
-                                .addGap(36, 36, 36)
-                                .addComponent(jRadioButton2))
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
+                                .addComponent(moodLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(53, 53, 53)
-                                .addComponent(btnMainMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jRadioButton3)
-                                .addGap(36, 36, 36)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(moodLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jRadioButton4))))))
-                .addGap(84, 84, 84)
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(unitsOfAlcohol, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(jLabel3)
+                                    .addGap(109, 109, 109)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGap(53, 53, 53)
+                                            .addComponent(btnMainMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jRadioButton3)
+                                            .addGap(36, 36, 36)
+                                            .addComponent(jRadioButton4)))))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(hoursInNature, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(144, 144, 144)
                 .addComponent(jLabel4))
         );
         layout.setVerticalGroup(
@@ -109,21 +122,26 @@ public class MoodGUI extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(btnMainMenu)))
-                .addGap(44, 44, 44)
+                .addGap(41, 41, 41)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(unitsOfAlcohol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2))
-                .addGap(18, 18, 18)
+                    .addComponent(hoursInNature, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jRadioButton3)
                         .addComponent(jRadioButton4))
                     .addComponent(jLabel3))
-                .addGap(26, 26, 26)
+                .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(moodLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(moodLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(66, 66, 66)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
@@ -176,15 +194,18 @@ public class MoodGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnMainMenu;
+    private javax.swing.JTextField hoursInNature;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JTextField moodLevel;
+    private javax.swing.JTextField unitsOfAlcohol;
     // End of variables declaration//GEN-END:variables
 }
