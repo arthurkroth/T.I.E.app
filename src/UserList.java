@@ -10,5 +10,22 @@ import java.util.ArrayList;
 public class UserList {
     private ArrayList<User> users;
     
+    private UserList()
+    {
+        users = new ArrayList<User>();
+    }
+    
+    private static UserList INSTANCE = new UserList();
+    
+    public static UserList getInstance()
+    {
+        return INSTANCE;
+    }
+    
+    public void addEmployee(User user)
+    {
+        users.add(user);
+    }
+    
     
 }

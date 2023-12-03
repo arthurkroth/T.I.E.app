@@ -8,19 +8,23 @@
  * @author arthurkroth
  */
 public class User{
+    private static User instance;
+    
     private String userName;
     private int userAge;
     private int userHeigth;
     private double userWeight;
     private String userAddress;
+    private String userFitnessLevel;
     
     //Constructor with all parameters.
-    public User(String userName, int userAge, int userHeigth,double userWeight, String userAddress){
+    public User(String userName, int userAge, int userHeigth,double userWeight, String userAddress, String userFitnessLevel){
         this.userName = userName;
         this.userAge = userAge;
         this.userHeigth = userHeigth;
         this.userWeight = userWeight;
         this.userAddress = userAddress;
+        this.userFitnessLevel = userFitnessLevel;
     }
     
     //Default Constructor
@@ -30,7 +34,16 @@ public class User{
         userHeigth = 0;
         userWeight = 0.0;
         userAddress = "";
+        userFitnessLevel = "";
     }
+    
+    public static User getInstance() {
+        if (instance == null) {
+            instance = new User();
+        }
+        return instance;
+    }
+    
 
     //SETTERS
     public void setUserName(String userName) {
@@ -52,6 +65,11 @@ public class User{
     public void setUserAddress(String userAddress) {
         this.userAddress = userAddress;
     }
+
+    public void setUserFitnessLevel(String userFitnessLevel) {
+        this.userFitnessLevel = userFitnessLevel;
+    }
+    
     
     //GETTERS
 
@@ -74,6 +92,15 @@ public class User{
     public String getUserAddress() {
         return userAddress;
     }
+
+    public String getUserFitnessLevel() {
+        return userFitnessLevel;
+    }
+
+    void setMotivationLevel(int motivationLevel) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
     
     
     

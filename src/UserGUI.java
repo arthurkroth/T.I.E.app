@@ -1,5 +1,7 @@
 
+import java.util.HashSet;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 /*
@@ -42,7 +44,7 @@ public class UserGUI extends javax.swing.JFrame {
         txtUserHeight = new javax.swing.JTextField();
         txtUserWeight = new javax.swing.JTextField();
         txtUserAddress = new javax.swing.JTextField();
-        cmbUserFitnessLevel = new javax.swing.JComboBox<>();
+        cmbFitnessLevel = new javax.swing.JComboBox<>();
         btnSaveUserInfo = new javax.swing.JButton();
         btnFitSection = new javax.swing.JButton();
         btnHealthSection = new javax.swing.JButton();
@@ -57,6 +59,7 @@ public class UserGUI extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        lblSaved = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -84,10 +87,10 @@ public class UserGUI extends javax.swing.JFrame {
             }
         });
 
-        cmbUserFitnessLevel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Beginner", "Intermediate", "Expert" }));
-        cmbUserFitnessLevel.addActionListener(new java.awt.event.ActionListener() {
+        cmbFitnessLevel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Beginner", "Intermediate", "Expert" }));
+        cmbFitnessLevel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbUserFitnessLevelActionPerformed(evt);
+                cmbFitnessLevelActionPerformed(evt);
             }
         });
 
@@ -197,7 +200,7 @@ public class UserGUI extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(82, 82, 82)
-                                .addComponent(cmbUserFitnessLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(cmbFitnessLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(36, 36, 36)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -215,27 +218,33 @@ public class UserGUI extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnHealthSection, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnNutritionSection, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(0, 0, 0)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel10)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(btnSaveUserInfo)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(btnSupportSection)
-                                        .addComponent(btnStressSection, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(btnResourcesSection)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(btnBuddyUpSection))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(11, 11, 11)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btnStressSection, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(btnMoodImprovementPlan, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(btnFitSection, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(btnMoodSection, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btnSupportSection)
+                                        .addGap(7, 7, 7)
+                                        .addComponent(btnResourcesSection)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btnBuddyUpSection)))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnFitSection, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnMoodSection, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(106, 106, 106)
+                        .addComponent(lblSaved, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnSaveUserInfo)
+                        .addGap(3, 3, 3)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addComponent(jLabel9))
         );
         layout.setVerticalGroup(
@@ -270,10 +279,15 @@ public class UserGUI extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
-                    .addComponent(cmbUserFitnessLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(btnSaveUserInfo)
-                .addGap(73, 73, 73)
+                    .addComponent(cmbFitnessLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(btnSaveUserInfo))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(lblSaved, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(53, 53, 53)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnHealthSection)
                     .addComponent(btnSupportSection)
@@ -330,9 +344,9 @@ public class UserGUI extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnFitSectionActionPerformed
 
-    private void cmbUserFitnessLevelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbUserFitnessLevelActionPerformed
+    private void cmbFitnessLevelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbFitnessLevelActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cmbUserFitnessLevelActionPerformed
+    }//GEN-LAST:event_cmbFitnessLevelActionPerformed
 
     private void btnMoodSectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoodSectionActionPerformed
         // TODO add your handling code here:
@@ -381,6 +395,95 @@ public class UserGUI extends javax.swing.JFrame {
 
     private void btnSaveUserInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveUserInfoActionPerformed
         // TODO add your handling code here:
+        String userName = this.txtUserName.getText();
+        int userAge = Integer.parseInt(this.txtUserAge.getText());
+        int userHeigth = Integer.parseInt(this.txtUserHeight.getText());
+        double userWeigth = Double.parseDouble(this.txtUserWeight.getText());
+        String userAddress = this.txtUserAddress.getText();
+        String userFitnessLevel = "";
+        int motivationLevel = 0;
+        
+        User user = User.getInstance();
+        
+        
+        //IF ELSE TO CHECK WHICH LEVEL OF FITNESS THE USER HAS, THEN CREATE THE NEW OBJECT BASED ON THE USER INFORMATION.
+        //ADDED VALIDATION FOR MOTIVATION/CONSISTENCY >0 AND <10
+        if (this.cmbFitnessLevel.getSelectedItem().equals("Beginner")) {
+            boolean validInput = false;
+            
+            while (!validInput) {
+            try {
+                motivationLevel = Integer.parseInt(JOptionPane.showInputDialog("On a scale from 0 to 10, what is your motivation?"));
+                if (motivationLevel >= 0 && motivationLevel <= 10) {
+                    validInput = true;
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please enter a value between 0 and 10.");
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Please enter a valid number between 0 and 10.");
+                }
+            }
+            
+            
+            user.setUserName(userName);
+            user.setUserAge(userAge);
+            user.setUserHeigth(userHeigth);
+            user.setUserWeight(userWeigth);
+            user.setUserAddress(userAddress);
+            user.setUserFitnessLevel(userFitnessLevel);
+            user.setMotivationLevel(motivationLevel);
+            
+        } else if (this.cmbFitnessLevel.getSelectedItem().equals("Intermediate")){
+            boolean validInput = false;
+            
+            while (!validInput) {
+            try {
+                motivationLevel = Integer.parseInt(JOptionPane.showInputDialog("On a scale from 0 to 10, what is your motivation?"));
+                if (motivationLevel >= 0 && motivationLevel <= 10) {
+                    validInput = true;
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please enter a value between 0 and 10.");
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Please enter a valid number between 0 and 10.");
+                }
+            }
+            
+            user.setUserName(userName);
+            user.setUserAge(userAge);
+            user.setUserHeigth(userHeigth);
+            user.setUserWeight(userWeigth);
+            user.setUserAddress(userAddress);
+            user.setUserFitnessLevel(userFitnessLevel);
+            user.setMotivationLevel(motivationLevel);
+            
+        } else if (this.cmbFitnessLevel.getSelectedItem().equals("Expert")) {
+            boolean validInput = false;
+            
+            while (!validInput) {
+            try {
+                motivationLevel = Integer.parseInt(JOptionPane.showInputDialog("On a scale from 0 to 10, what is your motivation?"));
+                if (motivationLevel >= 0 && motivationLevel <= 10) {
+                    validInput = true;
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please enter a value between 0 and 10.");
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Please enter a valid number between 0 and 10.");
+                }
+            }
+            user.setUserName(userName);
+            user.setUserAge(userAge);
+            user.setUserHeigth(userHeigth);
+            user.setUserWeight(userWeigth);
+            user.setUserAddress(userAddress);
+            user.setUserFitnessLevel(userFitnessLevel);
+            user.setMotivationLevel(motivationLevel);
+        }
+        
+        
+        
+        this.lblSaved.setText("Information saved, please choose your next step.");
     }//GEN-LAST:event_btnSaveUserInfoActionPerformed
 
     private void txtUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserNameActionPerformed
@@ -433,7 +536,7 @@ public class UserGUI extends javax.swing.JFrame {
     private javax.swing.JButton btnSaveUserInfo;
     private javax.swing.JButton btnStressSection;
     private javax.swing.JButton btnSupportSection;
-    private javax.swing.JComboBox<String> cmbUserFitnessLevel;
+    private javax.swing.JComboBox<String> cmbFitnessLevel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -444,6 +547,7 @@ public class UserGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel lblSaved;
     private javax.swing.JTextField txtUserAddress;
     private javax.swing.JTextField txtUserAge;
     private javax.swing.JTextField txtUserHeight;
