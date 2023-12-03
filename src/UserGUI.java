@@ -117,6 +117,11 @@ public class UserGUI extends javax.swing.JFrame {
 
         btnSupportSection.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btnSupportSection.setText("Support");
+        btnSupportSection.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSupportSectionActionPerformed(evt);
+            }
+        });
 
         btnNutritionSection.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btnNutritionSection.setText("Nutrition");
@@ -152,6 +157,11 @@ public class UserGUI extends javax.swing.JFrame {
 
         btnResourcesSection.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btnResourcesSection.setText("Resources");
+        btnResourcesSection.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResourcesSectionActionPerformed(evt);
+            }
+        });
 
         btnMoodImprovementPlan.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btnMoodImprovementPlan.setText("Mood Improovement");
@@ -290,6 +300,11 @@ public class UserGUI extends javax.swing.JFrame {
 
     private void btnBuddyUpSectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuddyUpSectionActionPerformed
         // TODO add your handling code here:
+        BuddyUpGUI buddyUp = new BuddyUpGUI(this);
+        buddyUp.setVisible(true);
+        buddyUp.setLocationRelativeTo(null);
+        
+        this.setVisible(false);
     }//GEN-LAST:event_btnBuddyUpSectionActionPerformed
 
     private void btnHealthSectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHealthSectionActionPerformed
@@ -350,14 +365,23 @@ public class UserGUI extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnMoodImprovementPlanActionPerformed
 
-    private void txtUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserNameActionPerformed
+    private void btnSupportSectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSupportSectionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtUserNameActionPerformed
-
-    private void btnSaveUserInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveUserInfoActionPerformed
-        // TODO add your handling code here:
+        SupportGUI support = new SupportGUI(this);
+        support.setVisible(true);
+        support.setLocationRelativeTo(null);
         
-    }//GEN-LAST:event_btnSaveUserInfoActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_btnSupportSectionActionPerformed
+
+    private void btnResourcesSectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResourcesSectionActionPerformed
+        // TODO add your handling code here:
+        ResourcesGUI resource = new ResourcesGUI(this);
+        resource.setVisible(true);
+        resource.setLocationRelativeTo(null);
+        
+        this.setVisible(false);
+    }//GEN-LAST:event_btnResourcesSectionActionPerformed
 
     /**
      * @param args the command line arguments

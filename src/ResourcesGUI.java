@@ -8,12 +8,14 @@
  * @author ciano
  */
 public class ResourcesGUI extends javax.swing.JFrame {
-    private UserGUI userGUI;
     /**
      * Creates new form ResourcesGUI
      */
-    public ResourcesGUI() {
+    private UserGUI userGUI;
+    
+    public ResourcesGUI(UserGUI userGUI) {
         initComponents();
+        this.userGUI = userGUI;
     }
 
     /**
@@ -232,7 +234,6 @@ public class ResourcesGUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ResourcesGUI().setVisible(true);
             }
         });
     }
