@@ -78,6 +78,12 @@ public class UserGUI extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel6.setText("Fitness Level:");
 
+        txtUserName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtUserNameActionPerformed(evt);
+            }
+        });
+
         cmbUserFitnessLevel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Beginner", "Intermediate", "Expert" }));
         cmbUserFitnessLevel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -87,6 +93,11 @@ public class UserGUI extends javax.swing.JFrame {
 
         btnSaveUserInfo.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnSaveUserInfo.setText("Save");
+        btnSaveUserInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveUserInfoActionPerformed(evt);
+            }
+        });
 
         btnFitSection.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btnFitSection.setText("Fit ");
@@ -338,6 +349,15 @@ public class UserGUI extends javax.swing.JFrame {
         
         this.setVisible(false);
     }//GEN-LAST:event_btnMoodImprovementPlanActionPerformed
+
+    private void txtUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUserNameActionPerformed
+
+    private void btnSaveUserInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveUserInfoActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnSaveUserInfoActionPerformed
 
     /**
      * @param args the command line arguments
