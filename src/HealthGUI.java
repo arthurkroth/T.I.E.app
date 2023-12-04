@@ -1,3 +1,6 @@
+
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -13,11 +16,11 @@ public class HealthGUI extends javax.swing.JFrame {
      * Creates new form HealthGUI
      */  
     private UserGUI userGUI;
+    private Health health;
     
     public HealthGUI(UserGUI userGUI) {
         initComponents();
         this.userGUI = userGUI;
-        getContentPane().setBackground(new java.awt.Color(255, 255, 255));
     }
     
 
@@ -50,6 +53,7 @@ public class HealthGUI extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        lblCalculateHealth = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -119,6 +123,20 @@ public class HealthGUI extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(77, 77, 77)
+                                .addComponent(btnMainMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel12)
+                                .addGap(156, 156, 156))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addGap(88, 88, 88))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(46, 46, 46)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -155,25 +173,15 @@ public class HealthGUI extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                                 .addComponent(btcCalculateHealth)
                                 .addGap(57, 57, 57))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(77, 77, 77)
-                                .addComponent(btnMainMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel12)
-                                .addGap(156, 156, 156))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(88, 88, 88)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(lblCalculateHealth, javax.swing.GroupLayout.PREFERRED_SIZE, 503, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jLabel11))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -201,19 +209,20 @@ public class HealthGUI extends javax.swing.JFrame {
                     .addComponent(jLabel8))
                 .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(171, 171, 171)
-                        .addComponent(jLabel12))
+                    .addComponent(jLabel4)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(cmbSmokeYes, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(3, 3, 3)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cmbSmokeNo)
                             .addComponent(btcCalculateHealth))))
+                .addGap(18, 18, 18)
+                .addComponent(lblCalculateHealth, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel9))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel11))
         );
@@ -238,6 +247,42 @@ public class HealthGUI extends javax.swing.JFrame {
 
     private void btcCalculateHealthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btcCalculateHealthActionPerformed
         // TODO add your handling code here:
+        
+        //Setting variables to collect the information from the GUI text fields
+        double alcoholConsumed = Double.parseDouble(txtAlcoholConsumed.getText());
+        double waterConsumed = Double.parseDouble(txtWaterConsumed.getText());
+        double hoursOfSleep = Double.parseDouble(txtSleepPerDay.getText());
+        boolean isSmoker = this.cmbSmokeYes.isSelected();
+        //Instantiating the Health class and passing the values.
+        health = new Health(alcoholConsumed, waterConsumed, hoursOfSleep,isSmoker);
+        
+        
+        //Calling necessary variables from the User class
+        User user = User.getInstance();
+        String userName = user.getUserName();
+        double userWeight = user.getUserWeight();
+        
+        
+        // Get calculated values from health
+        double calculatedAlcoholConsumed = health.getAlcoholConsumed();
+        double calculatedWaterConsumed = health.getWaterConsumed();
+        double calculatedHoursOfSleep = health.getHoursOfSleep();
+        boolean calculatedIsSmoker = health.getIsSmoker();
+        
+        //Calling the methods
+        String healthResult = health.toString();
+        String smoker = health.getRandomSmokerTip();
+        String waterIntake = health.recommendedWaterIntake();
+        String enoughSleep = health.generateSleepMessage(hoursOfSleep);
+        
+        
+
+        
+        
+       
+        lblCalculateHealth.setText("<html>" + waterIntake + "<br/>" +
+                enoughSleep + "<br/>" +
+                smoker + "</html>");
         
     }//GEN-LAST:event_btcCalculateHealthActionPerformed
 
@@ -294,6 +339,7 @@ public class HealthGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel lblCalculateHealth;
     private javax.swing.JTextField txtAlcoholConsumed;
     private javax.swing.JTextField txtSleepPerDay;
     private javax.swing.JTextField txtWaterConsumed;

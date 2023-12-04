@@ -229,7 +229,7 @@ public class NutritionGUI extends javax.swing.JFrame {
         
         
         //Calling the methods
-        String nutritionResult = nutrition.calculateNutrition();
+        String nutritionResult = nutrition.toString();
         double bmi = nutrition.calculateBMI();
         String protein = nutrition.evaluateProteinIntake();
         String carbs = nutrition.evaluateCarbsIntake();

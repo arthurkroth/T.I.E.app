@@ -406,10 +406,13 @@ public class UserGUI extends javax.swing.JFrame {
         User user = User.getInstance();
         
         
+        
+        
         //IF ELSE TO CHECK WHICH LEVEL OF FITNESS THE USER HAS, THEN CREATE THE NEW OBJECT BASED ON THE USER INFORMATION.
         //ADDED VALIDATION FOR MOTIVATION/CONSISTENCY >0 AND <10
         if (this.cmbFitnessLevel.getSelectedItem().equals("Beginner")) {
             boolean validInput = false;
+            userFitnessLevel = "Beginner";
             
             while (!validInput) {
             try {
@@ -434,6 +437,7 @@ public class UserGUI extends javax.swing.JFrame {
             
         } else if (this.cmbFitnessLevel.getSelectedItem().equals("Intermediate")){
             boolean validInput = false;
+            userFitnessLevel = "Intermediate";
             
             while (!validInput) {
             try {
@@ -458,6 +462,7 @@ public class UserGUI extends javax.swing.JFrame {
             
         } else if (this.cmbFitnessLevel.getSelectedItem().equals("Expert")) {
             boolean validInput = false;
+            userFitnessLevel = "Expert";
             
             while (!validInput) {
             try {
@@ -478,7 +483,17 @@ public class UserGUI extends javax.swing.JFrame {
             user.setUserAddress(userAddress);
             user.setUserFitnessLevel(userFitnessLevel);
             user.setMotivationLevel(motivationLevel);
+            
         }
+        int userFirtName = userName.indexOf(" ");
+        if (motivationLevel < 5 ) {
+            JOptionPane.showMessageDialog(null, "Hey " + userName.substring(0, userFirtName) + " as " + userFitnessLevel.toLowerCase() + " you're in the best place to get motivated!");
+        } else if (motivationLevel > 5 && motivationLevel < 9) {
+            JOptionPane.showMessageDialog(null, "Hey " + userName.substring(0, userFirtName) + " I'm sure you'll get enough motivation while using the app, specially being " + userFitnessLevel.toLowerCase() + " level!");
+        } else {
+            JOptionPane.showMessageDialog(null, "Hey " + userName.substring(0, userFirtName) + " welcome to our app! We love motivated people!");
+        }
+        
         
         
         
