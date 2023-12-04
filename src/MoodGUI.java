@@ -1,3 +1,14 @@
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -5,18 +16,30 @@
 
 /**
  *
- * @author micha
+ * @author Michael McCreary - x22171363
  */
-public class MoodGUI extends javax.swing.JFrame {
+public class MoodGUI extends javax.swing.JFrame implements ActionListener{
 
     /**
      * Creates new form MoodGUI
      */
     private UserGUI userGUI;
+    private static final String FILE_NAME = "mood.txt";
     
-    public MoodGUI(UserGUI userGUI) {
+    public MoodGUI(UserGUI userGUI){
         initComponents();
         this.userGUI = userGUI;
+        moodTips.addActionListener((ActionListener) this);
+        checkAndCreateFile();
+    }
+    
+        private void checkAndCreateFile(){
+        try{
+            FileWriter fileWriter = new FileWriter(FILE_NAME, true);
+            fileWriter.close();
+        } catch(IOException ex){
+            JOptionPane.showMessageDialog(null, "Error creating the file: " + ex.getMessage());
+        }
     }
 
     /**
@@ -33,15 +56,14 @@ public class MoodGUI extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         moodLevel = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         unitsOfAlcohol = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         hoursInNature = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        moodTips = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
+        socialiseRegurlaly = new javax.swing.JTextField();
 
         jLabel5.setText("jLabel5");
 
@@ -55,16 +77,10 @@ public class MoodGUI extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel1.setText("On a a scale of 1 to 10 inclusive, Please rate your daily Mood");
+        jLabel1.setText("On a a scale of 1 to 10, Please rate your daily Mood");
 
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel3.setText("Do you socialise regurlaly?");
-
-        jRadioButton3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jRadioButton3.setText("Yes");
-
-        jRadioButton4.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jRadioButton4.setText("No");
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Smiley.jpg"))); // NOI18N
 
@@ -74,11 +90,13 @@ public class MoodGUI extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel2.setText("How many hours would you spend out in nature each day");
 
-        jButton1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jButton1.setText("Generate Tips");
+        moodTips.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        moodTips.setText("Generate Tips");
 
         jLabel10.setFont(new java.awt.Font("LiSong Pro", 1, 50)); // NOI18N
         jLabel10.setText("T.I.E Mood");
+
+        socialiseRegurlaly.setText("Yes/No");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -89,7 +107,7 @@ public class MoodGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                         .addComponent(hoursInNature, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel6)
@@ -100,24 +118,22 @@ public class MoodGUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(moodLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(91, 91, 91)
+                        .addComponent(moodTips, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel3)
-                                        .addGap(109, 109, 109)
-                                        .addComponent(jRadioButton3)
-                                        .addGap(36, 36, 36))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnMainMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jRadioButton4)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(91, 91, 91)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addComponent(jLabel3)
+                                .addGap(201, 201, 201))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnMainMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(socialiseRegurlaly, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(57, 57, 57)
                 .addComponent(jLabel4))
         );
@@ -137,24 +153,31 @@ public class MoodGUI extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(hoursInNature, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(41, 41, 41)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jRadioButton3)
-                        .addComponent(jRadioButton4))
-                    .addComponent(jLabel3))
-                .addGap(44, 44, 44)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(socialiseRegurlaly, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(52, 52, 52)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(moodLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addGap(68, 68, 68)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(moodTips, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    
+        @Override
+    public void actionPerformed(ActionEvent e){
+        if(e.getSource() == moodTips){
+            moodTipsButtonClick();
+        }
+    }
+    
+    
     private void btnMainMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMainMenuActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
@@ -165,10 +188,90 @@ public class MoodGUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnMainMenuActionPerformed
 
+
+private void moodTipsButtonClick(){
+    try{
+        // Read existing content from the file
+        StringBuilder fileContent = new StringBuilder();
+        try(BufferedReader reader = new BufferedReader(new FileReader(FILE_NAME))){
+            String line;
+            while((line = reader.readLine()) != null) {
+                fileContent.append(line).append("\n");
+            }
+        }
+
+        // Append new tips to the content
+        fileContent.append(generateMoodTips(
+                Integer.parseInt(moodLevel.getText()),
+                "Yes".equalsIgnoreCase(socialiseRegurlaly.getText()),
+                Integer.parseInt(unitsOfAlcohol.getText()),
+                Integer.parseInt(hoursInNature.getText())
+        ));
+
+        // Write the updated content back to the file
+        try(BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_NAME))){
+            writer.write(fileContent.toString());
+        }
+
+        // Display a message or perform any other necessary actions
+        JOptionPane.showMessageDialog(this, generateMoodTips(
+                Integer.parseInt(moodLevel.getText()),
+                "Yes".equalsIgnoreCase(socialiseRegurlaly.getText()),
+                Integer.parseInt(unitsOfAlcohol.getText()),
+                Integer.parseInt(hoursInNature.getText())
+        ));
+        JOptionPane.showMessageDialog(this, "Mood tips written to the file.", "File Update", JOptionPane.INFORMATION_MESSAGE);
+
+    } catch(IOException | NumberFormatException ex){
+        JOptionPane.showMessageDialog(null, "Error reading/writing to the file: " + ex.getMessage());
+    }
+}
+
+    private String generateMoodTips(int moodLevel, boolean socializeRegularly, int unitsOfAlcohol, int hoursInNature){
+        StringBuilder tipsBuilder = new StringBuilder();
+
+        // Mood Level Tips
+        if(moodLevel < 5){
+            tipsBuilder.append("Your mood is quite low. Consider seeking support from friends or professionals. \n");
+        } else if(moodLevel < 7) {
+            tipsBuilder.append("Your mood is moderate. Engage in activities that bring you joy. \n");
+        } else{
+            tipsBuilder.append("You are in a good mood. Keep up the positive vibes! \n");
+        }
+
+        // Socializing Tips
+        if(!socializeRegularly){
+            tipsBuilder.append("Socializing is important for mental well-being. Make an effort to connect with others. \n");
+        } else{
+            tipsBuilder.append("Great job on maintaining regular social activities! \n");
+        }
+
+        // Alcohol Tips
+        if(unitsOfAlcohol >= 3){
+            tipsBuilder.append("Binge drinking can negatively impact your mood. Consider cutting down on alcohol consumption." + '\n'
+            + "If you need help getting your alcohol consumption under control please visit: https://www.drinkaware.ie/  \n");
+        } else if(unitsOfAlcohol > 0){
+            tipsBuilder.append("Your alcohol consumption is below recommended levels. Be mindful of its effects on your mood. \n");
+        } else{
+            tipsBuilder.append("You haven't consumed any alcohol. This is beneficial for your overall well-being. \n");
+        }
+
+        // Nature Tips
+        if(hoursInNature < 2){
+            tipsBuilder.append("Spending more time in nature can improve your mood and well-being. \n");
+        } else if(hoursInNature >= 2 && hoursInNature < 5) {
+            tipsBuilder.append("You are spending a decent amount of time in nature. Consider increasing it for additional benefits. \n");
+        } else{
+            tipsBuilder.append("You are getting a good dose of nature! Keep enjoying the outdoors. \n");
+        }
+
+        return tipsBuilder.toString();
+    }
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[]){
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -192,17 +295,15 @@ public class MoodGUI extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-            }
+        // Create and display the form 
+        java.awt.EventQueue.invokeLater(new Runnable(){
+            public void run(){}
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnMainMenu;
     private javax.swing.JTextField hoursInNature;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -210,9 +311,10 @@ public class MoodGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JTextField moodLevel;
+    private javax.swing.JButton moodTips;
+    private javax.swing.JTextField socialiseRegurlaly;
     private javax.swing.JTextField unitsOfAlcohol;
     // End of variables declaration//GEN-END:variables
+
 }

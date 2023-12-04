@@ -1,3 +1,8 @@
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -5,9 +10,9 @@
 
 /**
  *
- * @author micha
+ * @author Michael McCreary - x22171363
  */
-public class StressGUI extends javax.swing.JFrame {
+public class StressGUI extends javax.swing.JFrame implements ActionListener {
 
     /**
      * Creates new form StressGUI
@@ -18,6 +23,7 @@ public class StressGUI extends javax.swing.JFrame {
     public StressGUI(UserGUI userGUI) {
         initComponents();
         this.userGUI = userGUI;
+        stressTips.addActionListener((ActionListener) this);
     }
 
     private StressGUI() {
@@ -38,21 +44,19 @@ public class StressGUI extends javax.swing.JFrame {
         stressLevel = new javax.swing.JTextField();
         btnMainMenu = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
         jLabel3 = new javax.swing.JLabel();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
-        jButton1 = new javax.swing.JButton();
+        stressTips = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
+        easyStressed = new javax.swing.JTextField();
+        stressHelp = new javax.swing.JTextField();
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/stress-icon-4.jpg"))); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel1.setText("On a a scale of 1 to 10 inclusive, Please rate your daily stress levels");
+        jLabel1.setText("On a a scale of 1 to 10, Please rate your daily stress levels");
 
         stressLevel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,28 +74,20 @@ public class StressGUI extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel2.setText("Are you someone who gets stressed easily?");
 
-        jRadioButton1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jRadioButton1.setText("Yes");
-
-        jRadioButton2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jRadioButton2.setText("No");
-
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel3.setText("Do you have anyone to turn to for help when you are feeling stressed?");
+        jLabel3.setText("Do you have anyone to turn to when you are feeling stressed?");
 
-        jRadioButton3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jRadioButton3.setText("Yes");
-
-        jRadioButton4.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jRadioButton4.setText("No");
-
-        jButton1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jButton1.setText("Generate Tips");
+        stressTips.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        stressTips.setText("Generate Tips");
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/stress-icon-4.jpg"))); // NOI18N
 
         jLabel10.setFont(new java.awt.Font("LiSong Pro", 1, 50)); // NOI18N
         jLabel10.setText("T.I.E Stress");
+
+        easyStressed.setText("Yes/No");
+
+        stressHelp.setText("Yes/No");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -102,34 +98,30 @@ public class StressGUI extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel1))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGap(37, 37, 37)
                                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(44, 44, 44)
                                 .addComponent(btnMainMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel3)
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jRadioButton1))
-                                .addGap(25, 25, 25)
-                                .addComponent(jRadioButton2))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(84, 84, 84)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jRadioButton3)
-                                        .addGap(30, 30, 30)
-                                        .addComponent(jRadioButton4)))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE))
+                                .addComponent(stressTips, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 156, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(stressLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(108, 108, 108)))
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(stressHelp, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(easyStressed, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(stressLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(38, 38, 38)))
                 .addComponent(jLabel5))
         );
         layout.setVerticalGroup(
@@ -143,23 +135,19 @@ public class StressGUI extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLabel10)))
                 .addGap(46, 46, 46)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(stressLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(stressLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel3)
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel2)
+                    .addComponent(easyStressed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(68, 68, 68)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton3)
-                    .addComponent(jRadioButton4))
-                .addGap(46, 46, 46)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(stressHelp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(96, 96, 96)
+                .addComponent(stressTips, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(52, 52, 52))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -169,6 +157,56 @@ public class StressGUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+            @Override
+    public void actionPerformed(ActionEvent e){
+        if(e.getSource() == stressTips){
+            stressTipsButtonClick();
+        }
+    }
+    
+    private void stressTipsButtonClick() {
+    try {
+        JOptionPane.showMessageDialog(this, generateStressTips(
+                Integer.parseInt(stressLevel.getText()),
+                "Yes".equalsIgnoreCase(easyStressed.getText()),
+                "Yes".equalsIgnoreCase(stressHelp.getText())
+        ));
+    } catch (NumberFormatException ex) {
+        JOptionPane.showMessageDialog(null, "Please enter a valid number for stress level.");
+    }
+} 
+    private String generateStressTips(int stressLevel, boolean easyStressed, boolean stressHelp) {
+    StringBuilder tipsBuilder = new StringBuilder();
+
+    // Stress Level Tips
+    if (stressLevel >= 7) {
+        tipsBuilder.append("Your stress level is high. Consider taking some time for relaxation and stress reduction activities. \n");
+    } else if (stressLevel >= 4) {
+        tipsBuilder.append("Your stress level is moderate. Try incorporating stress-relief techniques into your routine. \n");
+    } else {
+        tipsBuilder.append("You're doing well in managing stress. Keep up the good work! \n");
+    }
+
+    // Easy Stressed Tips
+    if (!easyStressed) {
+        tipsBuilder.append("It seems you are easily stressed. Practice mindfulness and deep breathing to manage stress more effectively. \n");
+    } else{
+        tipsBuilder.append("Even People who handle stressful situations well have their limits. Be mindful of your situations and try not to take on more than you can handle. \n");
+    }
+
+    // Stress Help Tips
+    if (stressHelp) {
+        tipsBuilder.append("It is great that you have someone around you to talk to. You should use this invaluable resource whenever you need. \n");
+    } else{
+        tipsBuilder.append("\nHaving someone to rely on when things get stressful is a fundamental part of managing stress" + '\n'
+        + "You can even reach out to a professional councelling at https://www.iacp.ie/ '\n");
+    }
+
+    return tipsBuilder.toString();
+}
+    
+    
     private void btnMainMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMainMenuActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
@@ -219,17 +257,16 @@ public class StressGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnMainMenu;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JTextField easyStressed;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
+    private javax.swing.JTextField stressHelp;
     private javax.swing.JTextField stressLevel;
+    private javax.swing.JButton stressTips;
     // End of variables declaration//GEN-END:variables
+
 }

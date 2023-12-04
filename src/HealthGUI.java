@@ -219,7 +219,8 @@ public class HealthGUI extends javax.swing.JFrame {
     private void cmbSmokeNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSmokeNoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbSmokeNoActionPerformed
-
+    
+    
     private void btnMainMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMainMenuActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);

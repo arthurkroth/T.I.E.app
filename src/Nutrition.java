@@ -52,9 +52,8 @@ public class Nutrition {
     
     
     
-    public static double calculateBMI(){
-        return 
-    }
+ 
+
     
   
 }
