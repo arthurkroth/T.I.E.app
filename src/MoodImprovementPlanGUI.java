@@ -40,37 +40,37 @@ public class MoodImprovementPlanGUI extends javax.swing.JFrame implements Action
         initComponents();
         this.userGUI = userGUI;
  
-        affirmations.add("I am worthy of love and happiness.");
-        affirmations.add("I radiate confidence, self-respect, and inner harmony.");
-        affirmations.add("I believe in my abilities and unique talents.");
-        affirmations.add("I attract positive energy and opportunities into my life.");
-        affirmations.add("I am resilient, strong, and capable of overcoming challenges.");
-        affirmations.add("I trust the journey of my life and embrace the present moment.");
-        affirmations.add("I am surrounded by love and support.");
-        affirmations.add("I am a magnet for success and prosperity.");
-        affirmations.add("I choose joy, love, and abundance in my life.");
-        affirmations.add("I am constantly evolving and improving.");
-        affirmations.add("I deserve all the good things life has to offer.");
-        affirmations.add("My mind is full of positive and empowering thoughts.");
-        affirmations.add("I am in control of my thoughts and emotions.");
-        affirmations.add("I am open to new experiences and opportunities.");
-        affirmations.add("I forgive myself and let go of past mistakes.");
-        affirmations.add("I am a source of inspiration and positivity to others.");
-        affirmations.add("I am confident in my ability to achieve my goals.");
-        affirmations.add("I am at peace with my past and excited for the future.");
-        affirmations.add("I am surrounded by beauty and goodness.");
-        affirmations.add("I am a unique and valuable person.");
-        affirmations.add("I am deserving of success, happiness, and love.");
-        affirmations.add("I attract positive, like-minded individuals into my life.");
+        affirmations.add("I am worthy of love and happiness. ");
+        affirmations.add("I radiate confidence, self-respect, and inner harmony. ");
+        affirmations.add("I believe in my abilities and unique talents. ");
+        affirmations.add("I attract positive energy and opportunities into my life. ");
+        affirmations.add("I am resilient, strong, and capable of overcoming challenges. ");
+        affirmations.add("I trust the journey of my life and embrace the present moment. ");
+        affirmations.add("I am surrounded by love and support. ");
+        affirmations.add("I am a magnet for success and prosperity. ");
+        affirmations.add("I choose joy, love, and abundance in my life. ");
+        affirmations.add("I am constantly evolving and improving.  ");
+        affirmations.add("I deserve all the good things life has to offer. ");
+        affirmations.add("My mind is full of positive and empowering thoughts. ");
+        affirmations.add("I am in control of my thoughts and emotions. ");
+        affirmations.add("I am open to new experiences and opportunities. ");
+        affirmations.add("I forgive myself and let go of past mistakes. ");
+        affirmations.add("I am a source of inspiration and positivity to others. ");
+        affirmations.add("I am confident in my ability to achieve my goals. ");
+        affirmations.add("I am at peace with my past and excited for the future. ");
+        affirmations.add("I am surrounded by beauty and goodness. ");
+        affirmations.add("I am a unique and valuable person. ");
+        affirmations.add("I am deserving of success, happiness, and love. ");
+        affirmations.add("I attract positive, like-minded individuals into my life. ");
         affirmations.add("I am grateful for the abundance in my life.");
-        affirmations.add("I am worthy of success and prosperity.");
-        affirmations.add("I am free to create the life I desire.");
-        affirmations.add("I am in charge of my own happiness.");
-        affirmations.add("I release all fear and embrace love.");
-        affirmations.add("I am a beacon of positivity and optimism.");
-        affirmations.add("I am constantly growing and evolving.");
-        affirmations.add("I am at peace with who I am, and I am enough.");
-        affirmations.add("I am surrounded by love, light, and positive energy.");
+        affirmations.add("I am worthy of success and prosperity. ");
+        affirmations.add("I am free to create the life I desire. ");
+        affirmations.add("I am in charge of my own happiness. ");
+        affirmations.add("I release all fear and embrace love. ");
+        affirmations.add("I am a beacon of positivity and optimism. ");
+        affirmations.add("I am constantly growing and evolving. ");
+        affirmations.add("I am at peace with who I am, and I am enough. ");
+        affirmations.add("I am surrounded by love, light, and positive energy. ");
     }
 
     /**
@@ -256,14 +256,26 @@ public class MoodImprovementPlanGUI extends javax.swing.JFrame implements Action
         JOptionPane.showMessageDialog(this, "Tips written to file:\n" + filePath, "File Written", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_generateTipsActionPerformed
 
-    private String writeTipsToFile(String selectedActivity, String tipsMessage) {
+    // Method to write tips to a file and return the file path
+    private String writeTipsToFile(String selectedActivity, String tipsMessage){
+        
+        // Create a file name based on the selected activity (lowercase) with ".txt" extension
         String fileName = selectedActivity.toLowerCase() + ".txt";
-        try (FileWriter writer = new FileWriter(fileName)) {
+        
+        try (FileWriter writer = new FileWriter(fileName)){
+            // Write the tips message to the file
             writer.write(tipsMessage);
+            
+            // Return the absolute file path using Objects.requireNonNull to handle null case
             return Objects.requireNonNull(new File(fileName).getAbsolutePath());
-        } catch (IOException e) {
+        } catch (IOException e){
+            // Display an error message if there's an exception during file writing
             JOptionPane.showMessageDialog(this, "Error writing tips to file.", "Error", JOptionPane.ERROR_MESSAGE);
+            
+            // Print the exception stack trace for debugging purposes
             e.printStackTrace();
+            
+            // Return null to indicate an error occurred
             return null;
         }
     }
