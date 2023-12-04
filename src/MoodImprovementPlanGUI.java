@@ -32,45 +32,41 @@ public class MoodImprovementPlanGUI extends javax.swing.JFrame implements Action
     protected Yoga yoga;
     String yogaTips;
     
-    protected String getIsJournalingStatus() {
-        return isJournaling.getText();
-    }
-    
     public MoodImprovementPlanGUI(UserGUI userGUI) {
         initComponents();
         this.userGUI = userGUI;
  
-        affirmations.add("I am worthy of love and happiness.");
-        affirmations.add("I radiate confidence, self-respect, and inner harmony.");
-        affirmations.add("I believe in my abilities and unique talents.");
-        affirmations.add("I attract positive energy and opportunities into my life.");
-        affirmations.add("I am resilient, strong, and capable of overcoming challenges.");
-        affirmations.add("I trust the journey of my life and embrace the present moment.");
-        affirmations.add("I am surrounded by love and support.");
-        affirmations.add("I am a magnet for success and prosperity.");
-        affirmations.add("I choose joy, love, and abundance in my life.");
-        affirmations.add("I am constantly evolving and improving.");
-        affirmations.add("I deserve all the good things life has to offer.");
-        affirmations.add("My mind is full of positive and empowering thoughts.");
-        affirmations.add("I am in control of my thoughts and emotions.");
-        affirmations.add("I am open to new experiences and opportunities.");
-        affirmations.add("I forgive myself and let go of past mistakes.");
-        affirmations.add("I am a source of inspiration and positivity to others.");
-        affirmations.add("I am confident in my ability to achieve my goals.");
-        affirmations.add("I am at peace with my past and excited for the future.");
-        affirmations.add("I am surrounded by beauty and goodness.");
-        affirmations.add("I am a unique and valuable person.");
-        affirmations.add("I am deserving of success, happiness, and love.");
-        affirmations.add("I attract positive, like-minded individuals into my life.");
+        affirmations.add("I am worthy of love and happiness. ");
+        affirmations.add("I radiate confidence, self-respect, and inner harmony. ");
+        affirmations.add("I believe in my abilities and unique talents. ");
+        affirmations.add("I attract positive energy and opportunities into my life. ");
+        affirmations.add("I am resilient, strong, and capable of overcoming challenges. ");
+        affirmations.add("I trust the journey of my life and embrace the present moment. ");
+        affirmations.add("I am surrounded by love and support. ");
+        affirmations.add("I am a magnet for success and prosperity. ");
+        affirmations.add("I choose joy, love, and abundance in my life. ");
+        affirmations.add("I am constantly evolving and improving.  ");
+        affirmations.add("I deserve all the good things life has to offer. ");
+        affirmations.add("My mind is full of positive and empowering thoughts. ");
+        affirmations.add("I am in control of my thoughts and emotions. ");
+        affirmations.add("I am open to new experiences and opportunities. ");
+        affirmations.add("I forgive myself and let go of past mistakes. ");
+        affirmations.add("I am a source of inspiration and positivity to others. ");
+        affirmations.add("I am confident in my ability to achieve my goals. ");
+        affirmations.add("I am at peace with my past and excited for the future. ");
+        affirmations.add("I am surrounded by beauty and goodness. ");
+        affirmations.add("I am a unique and valuable person. ");
+        affirmations.add("I am deserving of success, happiness, and love. ");
+        affirmations.add("I attract positive, like-minded individuals into my life. ");
         affirmations.add("I am grateful for the abundance in my life.");
-        affirmations.add("I am worthy of success and prosperity.");
-        affirmations.add("I am free to create the life I desire.");
-        affirmations.add("I am in charge of my own happiness.");
-        affirmations.add("I release all fear and embrace love.");
-        affirmations.add("I am a beacon of positivity and optimism.");
-        affirmations.add("I am constantly growing and evolving.");
-        affirmations.add("I am at peace with who I am, and I am enough.");
-        affirmations.add("I am surrounded by love, light, and positive energy.");
+        affirmations.add("I am worthy of success and prosperity. ");
+        affirmations.add("I am free to create the life I desire. ");
+        affirmations.add("I am in charge of my own happiness. ");
+        affirmations.add("I release all fear and embrace love. ");
+        affirmations.add("I am a beacon of positivity and optimism. ");
+        affirmations.add("I am constantly growing and evolving. ");
+        affirmations.add("I am at peace with who I am, and I am enough. ");
+        affirmations.add("I am surrounded by love, light, and positive energy. ");
     }
 
     /**
@@ -262,55 +258,81 @@ public class MoodImprovementPlanGUI extends javax.swing.JFrame implements Action
     }//GEN-LAST:event_generateTipsActionPerformed
 
     private void isJournalingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_isJournalingActionPerformed
-        // TODO add your handling code here:
+            // TODO add your handling code here:
+            
+            // Get the user's input from the JTextField
+        String userInput = isJournaling.getText();
+
+        // Update the isJournaling variable based on user input
+        // You might want to perform some validation here to ensure the input is as expected
+        if ("Yes".equalsIgnoreCase(userInput) || "No".equalsIgnoreCase(userInput)) {
+            isJournaling.setText(userInput);
+        } else {
+            // Display an error message or handle invalid input
+            JOptionPane.showMessageDialog(this, "Please enter 'Yes' or 'No' for journaling status.", "Invalid Input", JOptionPane.ERROR_MESSAGE);
+            // You may choose to set a default value or leave it unchanged in case of invalid input
+        }
     }//GEN-LAST:event_isJournalingActionPerformed
 
-    private String writeTipsToFile(String selectedActivity, String tipsMessage) {
+    // Method to write tips to a file and return the file path
+    private String writeTipsToFile(String selectedActivity, String tipsMessage){
+        
+        // Create a file name based on the selected activity (lowercase) with ".txt" extension
         String fileName = selectedActivity.toLowerCase() + ".txt";
-        try (FileWriter writer = new FileWriter(fileName)) {
+        
+        try (FileWriter writer = new FileWriter(fileName)){
+            // Write the tips message to the file
             writer.write(tipsMessage);
+            
+            // Return the absolute file path using Objects.requireNonNull to handle null case
             return Objects.requireNonNull(new File(fileName).getAbsolutePath());
-        } catch (IOException e) {
+        } catch (IOException e){
+            // Display an error message if there's an exception during file writing
             JOptionPane.showMessageDialog(this, "Error writing tips to file.", "Error", JOptionPane.ERROR_MESSAGE);
+            
+            // Print the exception stack trace for debugging purposes
             e.printStackTrace();
+            
+            // Return null to indicate an error occurred
             return null;
         }
     }
      
-        public String generateTips(String activity, Component parentComponent){
+        public String generateTips(String activity, Component parentComponent) {
             StringBuilder tipsMessage = new StringBuilder();
 
             // Add tips based on the selected activity
-            switch (activity){
+            switch (activity) {
                 case "Breathing":
-                    // Create an instance of the Breathing class and call its generateTips method
                     Breathing breathing = new Breathing(userGUI);
-                    // Display Breathing tips using JOptionPane
-                    tipsMessage.append(breathing.generateTips(activity, parentComponent));;
+                    tipsMessage.append(breathing.generateTips(activity, parentComponent));
                     break;
                 case "Meditation":
-                    // Create an instance of the Meditation class and call its generateTips method
                     Meditation meditation = new Meditation(userGUI);
-                    // Display Meditation tips using JOptionPane
-                    tipsMessage.append(meditation.generateTips(activity, parentComponent));;
+                    tipsMessage.append(meditation.generateTips(activity, parentComponent));
                     break;
                 case "Visualisation":
-                    // Create an instance of the Visualisation class and call its generateTips method
                     Visualisation visualisation = new Visualisation(userGUI);
-                    // Display Visualisation tips using JOptionPane
-                    tipsMessage.append(visualisation.generateTips(activity, parentComponent));;
+                    tipsMessage.append(visualisation.generateTips(activity, parentComponent));
                     break;
                 case "Yoga":
-                    // Create an instance of the Yoga class and call its generateTips method
                     Yoga yoga = new Yoga(userGUI);
-                    // Display yoga tips using JOptionPane
                     tipsMessage.append(yoga.generateTips(activity, parentComponent));
                     break;
                 default:
-                    // Handle default case or provide an error message
                     tipsMessage.append("No tips available for the selected activity.\n");
                     break;
             }
+
+            // Add journaling tips based on user input
+            String journalingInput = isJournaling.getText().trim();
+            if ("Yes".equalsIgnoreCase(journalingInput)) {
+                tipsMessage.append("\nAdditional Tips for Journaling:\n");
+                tipsMessage.append("Include journaling as a reflection tool. Write about your thoughts, feelings, and experiences.");
+            } else if ("No".equalsIgnoreCase(journalingInput)) {
+                tipsMessage.append("\nConsider trying journaling as a way to reflect on your experiences and emotions.");
+            }
+
             return tipsMessage.toString();
         }
     

@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
  *
  * @author Michael McCreary - x22171363
  */
-public class StressGUI extends javax.swing.JFrame implements ActionListener {
+public class StressGUI extends javax.swing.JFrame implements ActionListener{
 
     /**
      * Creates new form StressGUI
@@ -20,13 +20,13 @@ public class StressGUI extends javax.swing.JFrame implements ActionListener {
     
     private UserGUI userGUI;
     
-    public StressGUI(UserGUI userGUI) {
+    public StressGUI(UserGUI userGUI){
         initComponents();
         this.userGUI = userGUI;
         stressTips.addActionListener((ActionListener) this);
     }
 
-    private StressGUI() {
+    private StressGUI(){
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -165,38 +165,38 @@ public class StressGUI extends javax.swing.JFrame implements ActionListener {
         }
     }
     
-    private void stressTipsButtonClick() {
-    try {
+    private void stressTipsButtonClick(){
+    try{
         JOptionPane.showMessageDialog(this, generateStressTips(
                 Integer.parseInt(stressLevel.getText()),
                 "Yes".equalsIgnoreCase(easyStressed.getText()),
                 "Yes".equalsIgnoreCase(stressHelp.getText())
         ));
-    } catch (NumberFormatException ex) {
+    } catch(NumberFormatException ex){
         JOptionPane.showMessageDialog(null, "Please enter a valid number for stress level.");
     }
 } 
-    private String generateStressTips(int stressLevel, boolean easyStressed, boolean stressHelp) {
+    private String generateStressTips(int stressLevel, boolean easyStressed, boolean stressHelp){
     StringBuilder tipsBuilder = new StringBuilder();
 
     // Stress Level Tips
-    if (stressLevel >= 7) {
+    if(stressLevel >= 7){
         tipsBuilder.append("Your stress level is high. Consider taking some time for relaxation and stress reduction activities. \n");
-    } else if (stressLevel >= 4) {
+    } else if(stressLevel >= 4) {
         tipsBuilder.append("Your stress level is moderate. Try incorporating stress-relief techniques into your routine. \n");
-    } else {
+    } else{
         tipsBuilder.append("You're doing well in managing stress. Keep up the good work! \n");
     }
 
     // Easy Stressed Tips
-    if (!easyStressed) {
+    if(!easyStressed){
         tipsBuilder.append("It seems you are easily stressed. Practice mindfulness and deep breathing to manage stress more effectively. \n");
     } else{
         tipsBuilder.append("Even People who handle stressful situations well have their limits. Be mindful of your situations and try not to take on more than you can handle. \n");
     }
 
     // Stress Help Tips
-    if (stressHelp) {
+    if (stressHelp){
         tipsBuilder.append("It is great that you have someone around you to talk to. You should use this invaluable resource whenever you need. \n");
     } else{
         tipsBuilder.append("\nHaving someone to rely on when things get stressful is a fundamental part of managing stress" + '\n'
@@ -224,7 +224,7 @@ public class StressGUI extends javax.swing.JFrame implements ActionListener {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[]){
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -250,7 +250,7 @@ public class StressGUI extends javax.swing.JFrame implements ActionListener {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+            public void run(){
             }
         });
     }
