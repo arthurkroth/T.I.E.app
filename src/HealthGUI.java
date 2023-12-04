@@ -90,6 +90,11 @@ public class HealthGUI extends javax.swing.JFrame {
 
         btcCalculateHealth.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         btcCalculateHealth.setText("Calculate");
+        btcCalculateHealth.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btcCalculateHealthActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Helvetica Neue", 0, 10)); // NOI18N
         jLabel5.setText("*Daily amounts");
@@ -230,6 +235,11 @@ public class HealthGUI extends javax.swing.JFrame {
             userGUI.setLocationRelativeTo(null);
         }
     }//GEN-LAST:event_btnMainMenuActionPerformed
+
+    private void btcCalculateHealthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btcCalculateHealthActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btcCalculateHealthActionPerformed
 
     /**
      * @param args the command line arguments

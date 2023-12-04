@@ -87,38 +87,38 @@ public class Nutrition {
         }
     }
     
-        public String evaluateCarbsIntake() {
-        // Similar evaluation can be done for carbs intake
-        double totalCarbsIntake = carbsIntake;
+    public String evaluateCarbsIntake() {
+    // Similar evaluation can be done for carbs intake
+    double totalCarbsIntake = carbsIntake;
 
-        // Set your recommended carbs intake per day here
-        double recommendedCarbsIntake = 250.0; // Assuming a value for recommended carbs intake
+    // Set your recommended carbs intake per day here
+    double recommendedCarbsIntake = 250.0; // Assuming a value for recommended carbs intake
 
-        if (totalCarbsIntake < recommendedCarbsIntake) {
-            return "You are ingesting fewer carbs than recommended.";
-        } else if (totalCarbsIntake == recommendedCarbsIntake) {
-            return "Your carbs intake is within the recommended range.";
-        } else {
-            return "You are ingesting more carbs than recommended.";
-        }
+    if (totalCarbsIntake < recommendedCarbsIntake) {
+        return "You are ingesting fewer carbs than recommended.";
+    } else if (totalCarbsIntake == recommendedCarbsIntake) {
+        return "Your carbs intake is within the recommended range.";
+    } else {
+        return "You are ingesting more carbs than recommended.";
     }
+}
 
-    public String evaluateWeightChangeTrend() {
-        // You might need more information to accurately predict weight change trends,
-        // such as the user's current weight, past weight, physical activity level, etc.
-        // Here, we'll use BMI to give a basic idea.
+public String evaluateWeightChangeTrend() {
+    // You might need more information to accurately predict weight change trends,
+    // such as the user's current weight, past weight, physical activity level, etc.
+    // Here, we'll use BMI to give a basic idea.
+    
+    double bmi = calculateBMI();
 
-        double bmi = calculateBMI();
-
-        if (bmi < 18.5) {
-            return "You are underweight. Consider consulting with a healthcare professional.";
-        } else if (bmi >= 18.5 && bmi < 24.9) {
-            return "Your weight is within the normal range.";
-        } else if (bmi >= 25.0 && bmi < 29.9) {
-            return "You are overweight. Consider adjusting your diet and exercise routine.";
-        } else {
-            return "You are obese. It's important to manage your weight for better health.";
-        }
+    if (bmi < 18.5) {
+        return "You are underweight. Consider consulting with a healthcare professional.";
+    } else if (bmi >= 18.5 && bmi < 24.9) {
+        return "Your weight is within the normal range.";
+    } else if (bmi >= 25.0 && bmi < 29.9) {
+        return "You are overweight. Consider adjusting your diet and exercise routine.";
+    } else {
+        return "You are obese. It's important to manage your weight for better health.";
     }
+}
     
 }
