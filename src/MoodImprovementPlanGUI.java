@@ -3,9 +3,13 @@ import java.awt.Component;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Objects;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -241,19 +245,29 @@ public class MoodImprovementPlanGUI extends javax.swing.JFrame implements Action
 
     private void generateTipsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateTipsActionPerformed
         // TODO add your handling code here:
-        
-        // This method is called when the user clicks the 'Generate Tips' button.
-        // We retrieve the selected activity from the 'activity' combobox.
         String selectedActivity = (String) activity.getSelectedItem();
-
-        // We call the generateTips() method to generate a tip message for the selected activity.
-        // We pass the selected activity and a reference to the current class as arguments.
         String tipsMessage = generateTips(selectedActivity, this);
-        
-        // We display the generated tip message in a JOptionPane dialog.
+
+        // Display the generated tip message in a JOptionPane dialog.
         JOptionPane.showMessageDialog(this, tipsMessage, "Tips", JOptionPane.INFORMATION_MESSAGE);
+
+        // Write tips to a file and display the file path
+        String filePath = writeTipsToFile(selectedActivity, tipsMessage);
+        JOptionPane.showMessageDialog(this, "Tips written to file:\n" + filePath, "File Written", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_generateTipsActionPerformed
 
+    private String writeTipsToFile(String selectedActivity, String tipsMessage) {
+        String fileName = selectedActivity.toLowerCase() + ".txt";
+        try (FileWriter writer = new FileWriter(fileName)) {
+            writer.write(tipsMessage);
+            return Objects.requireNonNull(new File(fileName).getAbsolutePath());
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "Error writing tips to file.", "Error", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+            return null;
+        }
+    }
+     
         public String generateTips(String activity, Component parentComponent){
             StringBuilder tipsMessage = new StringBuilder();
 
