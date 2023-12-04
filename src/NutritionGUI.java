@@ -16,6 +16,7 @@ public class NutritionGUI extends javax.swing.JFrame {
      * Creates new form FitGUI
      */
     private UserGUI userGUI;
+    private Nutrition nutrition;
     
     public NutritionGUI(UserGUI userGUI) {
         initComponents();
@@ -218,23 +219,38 @@ public class NutritionGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMainMenuActionPerformed
 
     private void btnCalculateNutritionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalculateNutritionActionPerformed
+
         // TODO add your handling code here:
-        User user = User.getInstance();
         int caloriesIntake = Integer.parseInt(this.txtCaloriesIntake.getText());
         int carbsIntake = Integer.parseInt(this.txtCarbsIntake.getText());
         int proteinIntake = Integer.parseInt(this.txtProteinIntake.getText());
         int burnedCalories = Integer.parseInt(this.txtCaloriesBurned.getText());
-        
-        String userName = user.getUserName();
-        int userAge = user.getUserAge();
-        int userHeigth = user.getUserHeigth();
-        double userWeight = user.getUserWeight();
-        String userAddress = user.getUserAddress();
-        String userFitnessLevel = user.getUserFitnessLevel();
+        nutrition = new Nutrition(caloriesIntake, carbsIntake, proteinIntake, burnedCalories);
         
         
+        //Calling the methods
+        String nutritionResult = nutrition.calculateNutrition();
+        double bmi = nutrition.calculateBMI();
+        String protein = nutrition.evaluateProteinIntake();
+        String carbs = nutrition.evaluateCarbsIntake();
+        String evaluateWeight = nutrition.evaluateWeightChangeTrend();
         
+        // Get calculated values from Nutrition
+        int calculatedCaloriesIntake = nutrition.getCaloriesIntake();
+        int calculatedCarbsIntake = nutrition.getCarbsIntake();
+        int calculatedProteinIntake = nutrition.getProteinIntake();
+        int calculatedBurnedCalories = nutrition.getBurnedCalories();
+ 
+        // Update the GUI with calculated values
+        // Example: Displaying a message dialog
+ 
+        // Display the calculated nutrition information in a JOptionPane
+        JOptionPane.showMessageDialog(null, protein);
         
+        lblCalculate.setText("<html>Your BMI is: " + bmi + "<br/>" +
+                protein + "<br/>" +
+                carbs + "<br/>" +
+                evaluateWeight + "</html>");
     }//GEN-LAST:event_btnCalculateNutritionActionPerformed
 
     /**

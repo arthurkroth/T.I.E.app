@@ -137,6 +137,11 @@ public class MoodImprovementPlanGUI extends javax.swing.JFrame implements Action
         });
 
         isJournaling.setText("Yes/No");
+        isJournaling.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                isJournalingActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -255,6 +260,10 @@ public class MoodImprovementPlanGUI extends javax.swing.JFrame implements Action
         String filePath = writeTipsToFile(selectedActivity, tipsMessage);
         JOptionPane.showMessageDialog(this, "Tips written to file:\n" + filePath, "File Written", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_generateTipsActionPerformed
+
+    private void isJournalingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_isJournalingActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_isJournalingActionPerformed
 
     private String writeTipsToFile(String selectedActivity, String tipsMessage) {
         String fileName = selectedActivity.toLowerCase() + ".txt";

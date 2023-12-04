@@ -424,7 +424,6 @@ public class UserGUI extends javax.swing.JFrame {
                 }
             }
             
-            
             user.setUserName(userName);
             user.setUserAge(userAge);
             user.setUserHeigth(userHeigth);

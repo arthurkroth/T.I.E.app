@@ -7,34 +7,37 @@
  *
  * @author arthurkroth
  */
-public class User{
+public class User extends UserGUI{
     private static User instance;
     
     private String userName;
     private int userAge;
-    private int userHeigth;
+    private int userHeight;
     private double userWeight;
     private String userAddress;
     private String userFitnessLevel;
+    private int motivationLevel;
     
     //Constructor with all parameters.
-    public User(String userName, int userAge, int userHeigth,double userWeight, String userAddress, String userFitnessLevel){
+    public User(String userName, int userAge, int userHeight, double userWeight, String userAddress, String userFitnessLevel, int motivationLevel){
         this.userName = userName;
         this.userAge = userAge;
-        this.userHeigth = userHeigth;
+        this.userHeight = userHeight;
         this.userWeight = userWeight;
         this.userAddress = userAddress;
         this.userFitnessLevel = userFitnessLevel;
+        this.motivationLevel = motivationLevel;
     }
     
     //Default Constructor
     public User(){
         userName = "";
         userAge = 0;
-        userHeigth = 0;
+        userHeight = 0;
         userWeight = 0.0;
         userAddress = "";
         userFitnessLevel = "";
+        motivationLevel = 0;
     }
     
     public static User getInstance() {
@@ -55,7 +58,7 @@ public class User{
     }
 
     public void setUserHeigth(int userHeigth) {
-        this.userHeigth = userHeigth;
+        this.userHeight = userHeigth;
     }
 
     public void setUserWeight(double userWeight) {
@@ -70,6 +73,9 @@ public class User{
         this.userFitnessLevel = userFitnessLevel;
     }
     
+    public void setMotivationLevel(int motivationLevel){
+        this.motivationLevel = motivationLevel;
+    }
     
     //GETTERS
 
@@ -82,7 +88,7 @@ public class User{
     }
 
     public int getUserHeigth() {
-        return userHeigth;
+        return userHeight;
     }
 
     public double getUserWeight() {
@@ -97,8 +103,8 @@ public class User{
         return userFitnessLevel;
     }
 
-    void setMotivationLevel(int motivationLevel) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public int getMotivationLevel(){
+        return motivationLevel;
     }
     
     
