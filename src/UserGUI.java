@@ -451,12 +451,22 @@ public class UserGUI extends javax.swing.JFrame {
     // Display personalized message based on user's fitness level and motivation
     private void displayPersonalizedMessage(String userName, String fitnessLevel, int motivationLevel) {
         int userFirstName = userName.indexOf(" ");
-        if (motivationLevel < 5) {
-            JOptionPane.showMessageDialog(null, "Hey " + userName.substring(0, userFirstName) + " as " + fitnessLevel.toLowerCase() + " you're in the best place to get motivated!");
-        } else if (motivationLevel > 5 && motivationLevel < 9) {
-            JOptionPane.showMessageDialog(null, "Hey " + userName.substring(0, userFirstName) + " I'm sure you'll get enough motivation while using the app, especially being " + fitnessLevel.toLowerCase() + " level!");
+        if (userFirstName == -1) {
+            if (motivationLevel < 5) {
+                JOptionPane.showMessageDialog(null, "Hey " + userName + " as " + fitnessLevel.toLowerCase() + " you're in the best place to get motivated!");
+            } else if (motivationLevel > 5 && motivationLevel < 9) {
+                JOptionPane.showMessageDialog(null, "Hey " + userName + " I'm sure you'll get enough motivation while using the app, especially being " + fitnessLevel.toLowerCase() + " level!");
+            } else {
+                JOptionPane.showMessageDialog(null, "Hey " + userName + " welcome to our app! We love motivated people!");
+            }
         } else {
-            JOptionPane.showMessageDialog(null, "Hey " + userName.substring(0, userFirstName) + " welcome to our app! We love motivated people!");
+            if (motivationLevel < 5) {
+                JOptionPane.showMessageDialog(null, "Hey " + userName.substring(0, userFirstName) + " as " + fitnessLevel.toLowerCase() + " you're in the best place to get motivated!");
+            } else if (motivationLevel > 5 && motivationLevel < 9) {
+                JOptionPane.showMessageDialog(null, "Hey " + userName.substring(0, userFirstName) + " I'm sure you'll get enough motivation while using the app, especially being " + fitnessLevel.toLowerCase() + " level!");
+            } else {
+                JOptionPane.showMessageDialog(null, "Hey " + userName.substring(0, userFirstName) + " welcome to our app! We love motivated people!");
+            }
         }
     }
 

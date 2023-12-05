@@ -255,6 +255,11 @@ public class HealthGUI extends javax.swing.JFrame {
             double hoursOfSleep = validateAndParseDouble(txtSleepPerDay.getText(), "Hours of Sleep");
             boolean isSmoker = cmbSmokeYes.isSelected();
 
+            
+            if (!isSmoker) {
+                throw new IllegalArgumentException("Please select whether you smoke or not.");
+            }
+            
             //Instantiating the Health class and passing the values.
             health = new Health(alcoholConsumed, waterConsumed, hoursOfSleep, isSmoker);
 
