@@ -20,12 +20,8 @@ public class Health {
     
     private HealthList healthList;
     
-    
+    //
     User user = User.getInstance();
-         
-    String userName = user.getUserName();
-    int userAge = user.getUserAge();
-    int userHeigth = user.getUserHeigth();
     double userWeight = user.getUserWeight();
     String userAddress = user.getUserAddress();
     String userFitnessLevel = user.getUserFitnessLevel();
@@ -105,6 +101,14 @@ public class Health {
             return "You're getting enough sleep. Keep it up!";
         } else {
             return "Consider getting more sleep for better health.";
+        }
+    }
+    
+    public String generateAlcoholMessage(){
+        if (alcoholConsumed > 0.5) {
+            return "Life is tough, but drinking alcohol everyday will not help, mind yourself";
+        } else {
+            return "";
         }
     }
 }

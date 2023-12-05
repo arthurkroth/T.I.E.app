@@ -274,6 +274,7 @@ public class HealthGUI extends javax.swing.JFrame {
         String smoker = health.getRandomSmokerTip();
         String waterIntake = health.recommendedWaterIntake();
         String enoughSleep = health.generateSleepMessage(hoursOfSleep);
+        String alcohol = health.generateAlcoholMessage();
         
         
 
@@ -282,7 +283,8 @@ public class HealthGUI extends javax.swing.JFrame {
        
         lblCalculateHealth.setText("<html>" + waterIntake + "<br/>" +
                 enoughSleep + "<br/>" +
-                smoker + "</html>");
+                smoker + "<br/>" +
+                alcohol + "</html>");
         
     }//GEN-LAST:event_btcCalculateHealthActionPerformed
 
