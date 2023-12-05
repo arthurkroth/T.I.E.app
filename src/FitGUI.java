@@ -1,3 +1,6 @@
+
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -13,6 +16,7 @@ public class FitGUI extends javax.swing.JFrame {
      * Creates new form NutritionGUI
      */
     private UserGUI userGUI;
+    
     
     public FitGUI(UserGUI userGUI) {
         initComponents();
@@ -38,7 +42,7 @@ public class FitGUI extends javax.swing.JFrame {
         txtHoursExercised = new javax.swing.JTextField();
         txtHoursOutside = new javax.swing.JTextField();
         txtStepsTaken = new javax.swing.JTextField();
-        cmbHealthGoal = new javax.swing.JComboBox<>();
+        cmbFitGoal = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -65,15 +69,20 @@ public class FitGUI extends javax.swing.JFrame {
         jLabel3.setText("Steps Taken:");
 
         jLabel4.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel4.setText("Healt Goal:");
+        jLabel4.setText("Fit Goal:");
 
         btnCalculateFit.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         btnCalculateFit.setText("Calculate");
-
-        cmbHealthGoal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Muscle Gain", "Fat Loss", "Body Maintenance" }));
-        cmbHealthGoal.addActionListener(new java.awt.event.ActionListener() {
+        btnCalculateFit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbHealthGoalActionPerformed(evt);
+                btnCalculateFitActionPerformed(evt);
+            }
+        });
+
+        cmbFitGoal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Muscle Gain", "Fat Loss", "Body Maintenance" }));
+        cmbFitGoal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbFitGoalActionPerformed(evt);
             }
         });
 
@@ -105,7 +114,7 @@ public class FitGUI extends javax.swing.JFrame {
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(cmbHealthGoal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(cmbFitGoal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addComponent(txtStepsTaken, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                 .addComponent(txtHoursExercised, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addComponent(txtHoursOutside, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -157,7 +166,7 @@ public class FitGUI extends javax.swing.JFrame {
                 .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(cmbHealthGoal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbFitGoal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnCalculateFit)
                 .addGap(119, 119, 119)
@@ -168,9 +177,9 @@ public class FitGUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cmbHealthGoalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbHealthGoalActionPerformed
+    private void cmbFitGoalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbFitGoalActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cmbHealthGoalActionPerformed
+    }//GEN-LAST:event_cmbFitGoalActionPerformed
 
     private void btnMainMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMainMenuActionPerformed
         // TODO add your handling code here:
@@ -181,6 +190,38 @@ public class FitGUI extends javax.swing.JFrame {
             userGUI.setLocationRelativeTo(null);
         }
     }//GEN-LAST:event_btnMainMenuActionPerformed
+
+    private void btnCalculateFitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalculateFitActionPerformed
+        // TODO add your handling code here:
+        
+        double hoursExercised = Double.parseDouble(txtHoursExercised.getText());
+        double hoursOutisde = Double.parseDouble(txtHoursOutside.getText());
+        int stepsTaken = Integer.parseInt(txtStepsTaken.getText());
+        String fitGoal = "";
+        
+        Fit fit = null;
+        
+        if (cmbFitGoal.getSelectedItem().equals("Muscle Gain")) {
+            fitGoal = "Muscle Gain";
+            fit = new FitMuscleGain(hoursExercised,hoursOutisde, stepsTaken, fitGoal);
+        } else if (cmbFitGoal.getSelectedItem().equals("Fat Loss")) {
+            fitGoal = "Fat Loss";
+            fit = new FitFatLoss(hoursExercised,hoursOutisde, stepsTaken, fitGoal);
+        } else if (cmbFitGoal.getSelectedItem().equals("Body Maintenance")){
+            fitGoal = "Body Maintenance";
+            fit = new FitBodyMaintenance(hoursExercised,hoursOutisde, stepsTaken, fitGoal);
+        }
+        
+        //Calling the methods
+        String text = fit.toString();
+        
+        JOptionPane.showMessageDialog(null, text);
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_btnCalculateFitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -222,7 +263,7 @@ public class FitGUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCalculateFit;
     private javax.swing.JButton btnMainMenu;
-    private javax.swing.JComboBox<String> cmbHealthGoal;
+    private javax.swing.JComboBox<String> cmbFitGoal;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
