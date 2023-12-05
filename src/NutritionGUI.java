@@ -234,6 +234,7 @@ public class NutritionGUI extends javax.swing.JFrame {
         String protein = nutrition.evaluateProteinIntake();
         String carbs = nutrition.evaluateCarbsIntake();
         String evaluateWeight = nutrition.evaluateWeightChangeTrend();
+        String weightChange = nutrition.estimateWeightChange();
         
         // Get calculated values from Nutrition
         int calculatedCaloriesIntake = nutrition.getCaloriesIntake();
@@ -250,7 +251,8 @@ public class NutritionGUI extends javax.swing.JFrame {
         lblCalculate.setText("<html>Your BMI is: " + bmi + "<br/>" +
                 protein + "<br/>" +
                 carbs + "<br/>" +
-                evaluateWeight + "</html>");
+                evaluateWeight + "<br/>" +
+                weightChange + "</html>");
     }//GEN-LAST:event_btnCalculateNutritionActionPerformed
 
     /**

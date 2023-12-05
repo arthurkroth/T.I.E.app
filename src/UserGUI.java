@@ -485,13 +485,13 @@ public class UserGUI extends javax.swing.JFrame {
             user.setMotivationLevel(motivationLevel);
             
         }
-        int userFirtName = userName.indexOf(" ");
+        int userFirstName = userName.indexOf(" ");
         if (motivationLevel < 5 ) {
-            JOptionPane.showMessageDialog(null, "Hey " + userName.substring(0, userFirtName) + " as " + userFitnessLevel.toLowerCase() + " you're in the best place to get motivated!");
+            JOptionPane.showMessageDialog(null, "Hey " + userName.substring(0, userFirstName) + " as " + userFitnessLevel.toLowerCase() + " you're in the best place to get motivated!");
         } else if (motivationLevel > 5 && motivationLevel < 9) {
-            JOptionPane.showMessageDialog(null, "Hey " + userName.substring(0, userFirtName) + " I'm sure you'll get enough motivation while using the app, specially being " + userFitnessLevel.toLowerCase() + " level!");
+            JOptionPane.showMessageDialog(null, "Hey " + userName.substring(0, userFirstName) + " I'm sure you'll get enough motivation while using the app, specially being " + userFitnessLevel.toLowerCase() + " level!");
         } else {
-            JOptionPane.showMessageDialog(null, "Hey " + userName.substring(0, userFirtName) + " welcome to our app! We love motivated people!");
+            JOptionPane.showMessageDialog(null, "Hey " + userName.substring(0, userFirstName) + " welcome to our app! We love motivated people!");
         }
         
         
