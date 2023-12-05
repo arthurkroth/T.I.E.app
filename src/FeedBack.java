@@ -12,8 +12,8 @@
  */
 public class FeedBack {
     private int rating; 
-    private boolean wouldUseAgain; 
-    private boolean achievedGoals;
+    private boolean wouldUseAgain = true; 
+    private boolean achievedGoals = true;
     private String feedbackText; 
     
     
@@ -34,13 +34,15 @@ public class FeedBack {
     }
     
      public String processFeedback() {
-        if (rating <= 4 && wouldUseAgain && achievedGoals) {
-            // Positive feedback
-            return "Thank you for your positive feedback! Your form has been sent to the team.";
-        } else {
-            // Negative feedback
-            return "We're sorry to hear that. We will take your feedback into account to improve our app.";
-        }
-        
+if ((rating >= 4) && (wouldUseAgain || achievedGoals)) {
+        // Positive feedback
+        return "Thank you for your positive feedback! Your form has been sent to the team.";
+    } else if (!(wouldUseAgain && achievedGoals)) {
+        // Negative feedback (both are answered with "No")
+        return "We're sorry to hear that. We will take your feedback into account to improve our app.";
+    } else {
+        // Default or other cases
+        return "Thank you for your feedback.";
+    }
      }
 }

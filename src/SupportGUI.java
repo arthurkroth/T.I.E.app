@@ -24,31 +24,19 @@ public class SupportGUI extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        // Add action listener for "Would you use T.I.E again?" radio buttons
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                // Handle the radio button action (you might not need anything specific here)
-            }
-        });
+    }
+     private void handleFeedbackSubmission() {
+        if (jRadioButton1.isSelected() && jRadioButton3.isSelected()) {
+            feedBack.setRating(jSlider1.getValue());
+            feedBack.setWouldUseAgain(jRadioButton1.isSelected());
+            feedBack.setAchievedGoals(jRadioButton3.isSelected());
+            feedBack.setFeedbackText(jTextArea1.getText());
 
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                // Handle the radio button action (you might not need anything specific here)
-            }
-        });
-
-        // Add action listener for "Did T.I.E help you achieve your goals?" radio buttons
-        jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                // Handle the radio button action (you might not need anything specific here)
-            }
-        });
-
-        jRadioButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                // Handle the radio button action (you might not need anything specific here)
-            }
-        });
+            String feedbackMessage = feedBack.processFeedback();
+            JOptionPane.showMessageDialog(this, feedbackMessage, "Feedback Result", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Please answer both questions before submitting feedback.", "Incomplete Feedback", JOptionPane.WARNING_MESSAGE);
+        }
     }
 
     /**
@@ -113,8 +101,11 @@ public class SupportGUI extends javax.swing.JFrame {
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cianimage2.png"))); // NOI18N
         jLabel5.setText("jLabel5");
 
+        jSlider1.setMaximum(10);
+        jSlider1.setMinimum(1);
         jSlider1.setPaintLabels(true);
         jSlider1.setToolTipText("");
+        jSlider1.setValue(6);
         jSlider1.setName(""); // NOI18N
 
         jLabel6.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
@@ -307,7 +298,8 @@ public class SupportGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (jRadioButton1.isSelected() && jRadioButton3.isSelected()) {
+        if ((jRadioButton1.isSelected() || jRadioButton2.isSelected()) && 
+        (jRadioButton3.isSelected() || jRadioButton4.isSelected())) {
         // Set the rating from the slider value
         feedBack.setRating(jSlider1.getValue());
 
