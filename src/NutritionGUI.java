@@ -111,13 +111,11 @@ public class NutritionGUI extends javax.swing.JFrame {
                         .addGap(132, 132, 132)
                         .addComponent(jLabel12))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(67, 67, 67)
+                        .addGap(36, 36, 36)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(lblCalculate, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addGap(82, 82, 82)
-                                    .addComponent(jLabel13)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(82, 82, 82)
+                                .addComponent(jLabel13))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,20 +141,20 @@ public class NutritionGUI extends javax.swing.JFrame {
                                             .addComponent(txtCaloriesBurned, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                             .addComponent(jLabel9))))
-                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(609, Short.MAX_VALUE))
+                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblCalculate, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(640, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnCalculateNutrition)
-                        .addGap(51, 51, 51))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnMainMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel11)
-                        .addGap(94, 94, 94)))
+                        .addGap(94, 94, 94))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnCalculateNutrition)
+                            .addComponent(btnMainMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(31, 31, 31)))
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
@@ -193,12 +191,11 @@ public class NutritionGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(38, 38, 38)
-                        .addComponent(btnCalculateNutrition)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnCalculateNutrition))
+                    .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblCalculate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(38, 38, 38)))
+                        .addComponent(lblCalculate, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel12)
                     .addComponent(jLabel13)))
@@ -220,39 +217,58 @@ public class NutritionGUI extends javax.swing.JFrame {
 
     private void btnCalculateNutritionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalculateNutritionActionPerformed
 
-        // TODO add your handling code here:
-        int caloriesIntake = Integer.parseInt(this.txtCaloriesIntake.getText());
-        int carbsIntake = Integer.parseInt(this.txtCarbsIntake.getText());
-        int proteinIntake = Integer.parseInt(this.txtProteinIntake.getText());
-        int burnedCalories = Integer.parseInt(this.txtCaloriesBurned.getText());
+     try {
+        int caloriesIntake = validateAndParseInt(txtCaloriesIntake.getText(), "Calories Intake");
+        int carbsIntake = validateAndParseInt(txtCarbsIntake.getText(), "Carbs Intake");
+        int proteinIntake = validateAndParseInt(txtProteinIntake.getText(), "Protein Intake");
+        int burnedCalories = validateAndParseInt(txtCaloriesBurned.getText(), "Calories Burned");
+
+        // Create Nutrition instance with validated input
         nutrition = new Nutrition(caloriesIntake, carbsIntake, proteinIntake, burnedCalories);
-        
-        
-        //Calling the methods
+
+        // Get user's fitness level
+        User user = User.getInstance();
+        String userFitnessLevel = user.getUserFitnessLevel();
+
+        // Calling the methods
         String nutritionResult = nutrition.toString();
         double bmi = nutrition.calculateBMI();
         String protein = nutrition.evaluateProteinIntake();
         String carbs = nutrition.evaluateCarbsIntake();
-        String evaluateWeight = nutrition.evaluateWeightChangeTrend();
+        String evaluateWeight = nutrition.evaluateWeightChangeTrend(userFitnessLevel);
         String weightChange = nutrition.estimateWeightChange();
-        
-        // Get calculated values from Nutrition
-        int calculatedCaloriesIntake = nutrition.getCaloriesIntake();
-        int calculatedCarbsIntake = nutrition.getCarbsIntake();
-        int calculatedProteinIntake = nutrition.getProteinIntake();
-        int calculatedBurnedCalories = nutrition.getBurnedCalories();
- 
-        // Update the GUI with calculated values
-        // Example: Displaying a message dialog
- 
+
         // Display the calculated nutrition information in a JOptionPane
-        JOptionPane.showMessageDialog(null, protein);
-        
+        JOptionPane.showMessageDialog(null, "Keep up the good work!!");
+
+        // Update label with the calculated information
         lblCalculate.setText("<html>Your BMI is: " + bmi + "<br/>" +
                 protein + "<br/>" +
                 carbs + "<br/>" +
                 evaluateWeight + "<br/>" +
                 weightChange + "</html>");
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, "Invalid input. Please enter valid numeric values.");
+        } catch (IllegalArgumentException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+    }
+
+    // Method to validate and parse integer input from text fields
+    private int validateAndParseInt(String input, String fieldName) throws NumberFormatException, IllegalArgumentException {
+        if (input.isEmpty()) {
+            throw new IllegalArgumentException(fieldName + " field is empty.");
+        }
+
+        try {
+            int value = Integer.parseInt(input);
+            if (value < 0) {
+                throw new IllegalArgumentException(fieldName + " cannot be negative.");
+            }
+            return value;
+        } catch (NumberFormatException ex) {
+            throw new NumberFormatException("Invalid input for " + fieldName + ". Please enter a valid integer value.");
+        }
     }//GEN-LAST:event_btnCalculateNutritionActionPerformed
 
     /**

@@ -64,7 +64,7 @@ public class UserGUI extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel1.setText("Name:");
+        jLabel1.setText("Full Name:");
 
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel2.setText("Height");
@@ -395,109 +395,111 @@ public class UserGUI extends javax.swing.JFrame {
 
     private void btnSaveUserInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveUserInfoActionPerformed
         // TODO add your handling code here:
-        String userName = this.txtUserName.getText();
-        int userAge = Integer.parseInt(this.txtUserAge.getText());
-        int userHeigth = Integer.parseInt(this.txtUserHeight.getText());
-        double userWeigth = Double.parseDouble(this.txtUserWeight.getText());
-        String userAddress = this.txtUserAddress.getText();
-        String userFitnessLevel = "";
-        int motivationLevel = 0;
-        
+    try {
+        String userName = validateStringInput(txtUserName.getText(), "User Name");
+        int userAge = validateAndParseInt(txtUserAge.getText(), "User Age");
+        int userHeight = validateAndParseInt(txtUserHeight.getText(), "User Height");
+        double userWeight = validateAndParseDouble(txtUserWeight.getText(), "User Weight");
+        String userAddress = validateStringInput(txtUserAddress.getText(), "User Address");
+
+        // Retrieve fitness level from combo box
+        String userFitnessLevel = (String) cmbFitnessLevel.getSelectedItem();
+        int motivationLevel = promptMotivationLevel();
+
+        // Create or update User instance with validated input
         User user = User.getInstance();
-        
-        
-        
-        
-        //IF ELSE TO CHECK WHICH LEVEL OF FITNESS THE USER HAS, THEN CREATE THE NEW OBJECT BASED ON THE USER INFORMATION.
-        //ADDED VALIDATION FOR MOTIVATION/CONSISTENCY >0 AND <10
-        if (this.cmbFitnessLevel.getSelectedItem().equals("Beginner")) {
-            boolean validInput = false;
-            userFitnessLevel = "Beginner";
-            
-            while (!validInput) {
-            try {
-                motivationLevel = Integer.parseInt(JOptionPane.showInputDialog("On a scale from 0 to 10, what is your motivation?"));
-                if (motivationLevel >= 0 && motivationLevel <= 10) {
-                    validInput = true;
-                } else {
-                    JOptionPane.showMessageDialog(null, "Please enter a value between 0 and 10.");
-                }
-            } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "Please enter a valid number between 0 and 10.");
-                }
-            }
-            
-            user.setUserName(userName);
-            user.setUserAge(userAge);
-            user.setUserHeigth(userHeigth);
-            user.setUserWeight(userWeigth);
-            user.setUserAddress(userAddress);
-            user.setUserFitnessLevel(userFitnessLevel);
-            user.setMotivationLevel(motivationLevel);
-            
-        } else if (this.cmbFitnessLevel.getSelectedItem().equals("Intermediate")){
-            boolean validInput = false;
-            userFitnessLevel = "Intermediate";
-            
-            while (!validInput) {
-            try {
-                motivationLevel = Integer.parseInt(JOptionPane.showInputDialog("On a scale from 0 to 10, what is your motivation?"));
-                if (motivationLevel >= 0 && motivationLevel <= 10) {
-                    validInput = true;
-                } else {
-                    JOptionPane.showMessageDialog(null, "Please enter a value between 0 and 10.");
-                }
-            } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "Please enter a valid number between 0 and 10.");
-                }
-            }
-            
-            user.setUserName(userName);
-            user.setUserAge(userAge);
-            user.setUserHeigth(userHeigth);
-            user.setUserWeight(userWeigth);
-            user.setUserAddress(userAddress);
-            user.setUserFitnessLevel(userFitnessLevel);
-            user.setMotivationLevel(motivationLevel);
-            
-        } else if (this.cmbFitnessLevel.getSelectedItem().equals("Expert")) {
-            boolean validInput = false;
-            userFitnessLevel = "Expert";
-            
-            while (!validInput) {
-            try {
-                motivationLevel = Integer.parseInt(JOptionPane.showInputDialog("On a scale from 0 to 10, what is your motivation?"));
-                if (motivationLevel >= 0 && motivationLevel <= 10) {
-                    validInput = true;
-                } else {
-                    JOptionPane.showMessageDialog(null, "Please enter a value between 0 and 10.");
-                }
-            } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "Please enter a valid number between 0 and 10.");
-                }
-            }
-            user.setUserName(userName);
-            user.setUserAge(userAge);
-            user.setUserHeigth(userHeigth);
-            user.setUserWeight(userWeigth);
-            user.setUserAddress(userAddress);
-            user.setUserFitnessLevel(userFitnessLevel);
-            user.setMotivationLevel(motivationLevel);
-            
+        user.setUserName(userName);
+        user.setUserAge(userAge);
+        user.setUserHeigth(userHeight);
+        user.setUserWeight(userWeight);
+        user.setUserAddress(userAddress);
+        user.setUserFitnessLevel(userFitnessLevel);
+        user.setMotivationLevel(motivationLevel);
+
+        // Display personalized message based on user's fitness level and motivation
+        displayPersonalizedMessage(userName, userFitnessLevel, motivationLevel);
+
+        // Update label to indicate information has been saved
+        lblSaved.setText("Information saved, please choose your next step.");
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        } catch (IllegalArgumentException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
         }
+    }
+
+    // Validate and prompt for motivation level
+    private int promptMotivationLevel(){
+    int motivationLevel = 0;
+    boolean validInput = false;
+
+    while (!validInput) {
+        try {
+            motivationLevel = Integer.parseInt(JOptionPane.showInputDialog("On a scale from 0 to 10, what is your motivation?"));
+            if (motivationLevel >= 0 && motivationLevel <= 10) {
+                validInput = true;
+            } else {
+                JOptionPane.showMessageDialog(null, "Please enter a value between 0 and 10.");
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Please enter a valid number between 0 and 10.");
+        }
+    }
+    return motivationLevel;
+    }
+
+    // Display personalized message based on user's fitness level and motivation
+    private void displayPersonalizedMessage(String userName, String fitnessLevel, int motivationLevel) {
         int userFirstName = userName.indexOf(" ");
-        if (motivationLevel < 5 ) {
-            JOptionPane.showMessageDialog(null, "Hey " + userName.substring(0, userFirstName) + " as " + userFitnessLevel.toLowerCase() + " you're in the best place to get motivated!");
+        if (motivationLevel < 5) {
+            JOptionPane.showMessageDialog(null, "Hey " + userName.substring(0, userFirstName) + " as " + fitnessLevel.toLowerCase() + " you're in the best place to get motivated!");
         } else if (motivationLevel > 5 && motivationLevel < 9) {
-            JOptionPane.showMessageDialog(null, "Hey " + userName.substring(0, userFirstName) + " I'm sure you'll get enough motivation while using the app, specially being " + userFitnessLevel.toLowerCase() + " level!");
+            JOptionPane.showMessageDialog(null, "Hey " + userName.substring(0, userFirstName) + " I'm sure you'll get enough motivation while using the app, especially being " + fitnessLevel.toLowerCase() + " level!");
         } else {
             JOptionPane.showMessageDialog(null, "Hey " + userName.substring(0, userFirstName) + " welcome to our app! We love motivated people!");
         }
-        
-        
-        
-        
-        this.lblSaved.setText("Information saved, please choose your next step.");
+    }
+
+    // Method to validate string input from text fields
+    private String validateStringInput(String input, String fieldName) throws IllegalArgumentException {
+        if (input.isEmpty()) {
+            throw new IllegalArgumentException(fieldName + " field is empty.");
+        }
+        return input;
+    }
+
+    // Method to validate and parse integer input from text fields
+    private int validateAndParseInt(String input, String fieldName) throws NumberFormatException, IllegalArgumentException {
+        if (input.isEmpty()) {
+            throw new IllegalArgumentException(fieldName + " field is empty.");
+        }
+
+        try {
+            int value = Integer.parseInt(input);
+            if (value < 0) {
+                throw new IllegalArgumentException(fieldName + " cannot be negative.");
+            }
+            return value;
+        } catch (NumberFormatException ex) {
+            throw new NumberFormatException("Invalid input for " + fieldName + ". Please enter a valid integer value.");
+        }
+    }
+
+    // Method to validate and parse double input from text fields
+    private double validateAndParseDouble(String input, String fieldName) throws NumberFormatException, IllegalArgumentException {
+        if (input.isEmpty()) {
+            throw new IllegalArgumentException(fieldName + " field is empty.");
+        }
+
+        try {
+            double value = Double.parseDouble(input);
+            if (value < 0) {
+                throw new IllegalArgumentException(fieldName + " cannot be negative.");
+            }
+            return value;
+        } catch (NumberFormatException ex) {
+            throw new NumberFormatException("Invalid input for " + fieldName + ". Please enter a valid numeric value.");
+        }
     }//GEN-LAST:event_btnSaveUserInfoActionPerformed
 
     private void txtUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserNameActionPerformed
