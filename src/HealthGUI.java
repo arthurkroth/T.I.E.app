@@ -248,43 +248,54 @@ public class HealthGUI extends javax.swing.JFrame {
     private void btcCalculateHealthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btcCalculateHealthActionPerformed
         // TODO add your handling code here:
         
-        //Setting variables to collect the information from the GUI text fields
-        double alcoholConsumed = Double.parseDouble(txtAlcoholConsumed.getText());
-        double waterConsumed = Double.parseDouble(txtWaterConsumed.getText());
-        double hoursOfSleep = Double.parseDouble(txtSleepPerDay.getText());
-        boolean isSmoker = this.cmbSmokeYes.isSelected();
-        //Instantiating the Health class and passing the values.
-        health = new Health(alcoholConsumed, waterConsumed, hoursOfSleep,isSmoker);
-        
-        
-        //Calling necessary variables from the User class
-        User user = User.getInstance();
-        String userName = user.getUserName();
-        double userWeight = user.getUserWeight();
-        
-        
-        // Get calculated values from health
-        double calculatedAlcoholConsumed = health.getAlcoholConsumed();
-        double calculatedWaterConsumed = health.getWaterConsumed();
-        double calculatedHoursOfSleep = health.getHoursOfSleep();
-        boolean calculatedIsSmoker = health.getIsSmoker();
-        
-        //Calling the methods
-        String healthResult = health.toString();
-        String smoker = health.getRandomSmokerTip();
-        String waterIntake = health.recommendedWaterIntake();
-        String enoughSleep = health.generateSleepMessage(hoursOfSleep);
-        String alcohol = health.generateAlcoholMessage();
-        
-        
+        try {
+            //Setting variables to collect the information from the GUI text fields
+            double alcoholConsumed = validateAndParseDouble(txtAlcoholConsumed.getText(), "Alcohol Consumed");
+            double waterConsumed = validateAndParseDouble(txtWaterConsumed.getText(), "Water Consumed");
+            double hoursOfSleep = validateAndParseDouble(txtSleepPerDay.getText(), "Hours of Sleep");
+            boolean isSmoker = cmbSmokeYes.isSelected();
 
-        
-        
-       
-        lblCalculateHealth.setText("<html>" + waterIntake + "<br/>" +
-                enoughSleep + "<br/>" +
-                smoker + "<br/>" +
-                alcohol + "</html>");
+            //Instantiating the Health class and passing the values.
+            health = new Health(alcoholConsumed, waterConsumed, hoursOfSleep, isSmoker);
+
+            //Calling necessary variables from the User class
+            User user = User.getInstance();
+            String userName = user.getUserName();
+            double userWeight = user.getUserWeight();
+
+            //Calling the methods
+            String healthResult = health.toString();
+            String smoker = health.getRandomSmokerTip();
+            String waterIntake = health.recommendedWaterIntake();
+            String enoughSleep = health.generateSleepMessage(hoursOfSleep);
+            String alcohol = health.generateAlcoholMessage();
+
+            lblCalculateHealth.setText("<html>" + waterIntake + "<br/>" +
+                    enoughSleep + "<br/>" +
+                    smoker + "<br/>" +
+                    alcohol + "</html>");
+            } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+            } catch (IllegalArgumentException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+            }
+    }
+
+    // Method to validate and parse double input from text fields
+    private double validateAndParseDouble(String input, String fieldName) throws NumberFormatException, IllegalArgumentException {
+        if (input.isEmpty()) {
+            throw new IllegalArgumentException(fieldName + " field is empty.");
+        }
+
+    try {
+        double value = Double.parseDouble(input);
+        if (value < 0) {
+            throw new IllegalArgumentException(fieldName + " cannot be negative.");
+        }
+        return value;
+    } catch (NumberFormatException ex) {
+        throw new NumberFormatException("Invalid input for " + fieldName + ". Please enter a valid numeric value.");
+    }
         
     }//GEN-LAST:event_btcCalculateHealthActionPerformed
 
