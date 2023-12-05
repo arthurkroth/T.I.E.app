@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
+import javax.swing.JOptionPane;
 /**
  *
  * @author ciano
@@ -12,10 +12,43 @@ public class SupportGUI extends javax.swing.JFrame {
      * Creates new form SupportGUI
      */
     private UserGUI userGUI;
+    private FeedBack feedBack; 
     
     public SupportGUI(UserGUI userGUI) {
         initComponents();
         this.userGUI = userGUI;
+        feedBack = new FeedBack(); 
+        
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        // Add action listener for "Would you use T.I.E again?" radio buttons
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                // Handle the radio button action (you might not need anything specific here)
+            }
+        });
+
+        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                // Handle the radio button action (you might not need anything specific here)
+            }
+        });
+
+        // Add action listener for "Did T.I.E help you achieve your goals?" radio buttons
+        jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                // Handle the radio button action (you might not need anything specific here)
+            }
+        });
+
+        jRadioButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                // Handle the radio button action (you might not need anything specific here)
+            }
+        });
     }
 
     /**
@@ -92,6 +125,11 @@ public class SupportGUI extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jButton1.setText("Submit");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel2.setText("Bad ");
@@ -115,13 +153,28 @@ public class SupportGUI extends javax.swing.JFrame {
 
         jRadioButton2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jRadioButton2.setText("No");
+        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel11.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel11.setText("Did T.I.E help you achieve your goals?");
 
         jRadioButton3.setText("Yes");
+        jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton3ActionPerformed(evt);
+            }
+        });
 
         jRadioButton4.setText("No");
+        jRadioButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton4ActionPerformed(evt);
+            }
+        });
 
         jLabel10.setFont(new java.awt.Font("LiSong Pro", 1, 50)); // NOI18N
         jLabel10.setText("T.I.E Support");
@@ -249,7 +302,46 @@ public class SupportGUI extends javax.swing.JFrame {
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
         // TODO add your handling code here:
+        // Handle the submit button action
+         jButton1ActionPerformed(evt);
     }//GEN-LAST:event_jRadioButton1ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if (jRadioButton1.isSelected() && jRadioButton3.isSelected()) {
+        // Set the rating from the slider value
+        feedBack.setRating(jSlider1.getValue());
+
+        // Set the "Would you use T.I.E again?" value
+        feedBack.setWouldUseAgain(jRadioButton1.isSelected());
+
+        // Set the "Did T.I.E help you achieve your goals?" value
+        feedBack.setAchievedGoals(jRadioButton3.isSelected());
+
+        // Set the feedback text
+        feedBack.setFeedbackText(jTextArea1.getText());
+
+        // Process the feedback and get the result message
+        String feedbackMessage = feedBack.processFeedback();
+
+        // Display the feedback message to the user (you can use JOptionPane or a JLabel)
+        JOptionPane.showMessageDialog(this, feedbackMessage, "Feedback Result", JOptionPane.INFORMATION_MESSAGE);
+    } else {
+        // Inform the user that both questions need to be answered
+        JOptionPane.showMessageDialog(this, "Please answer both questions before submitting feedback.", "Incomplete Feedback", JOptionPane.WARNING_MESSAGE);
+    }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton3ActionPerformed
+
+    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton2ActionPerformed
+
+    private void jRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton4ActionPerformed
 
     /**
      * @param args the command line arguments

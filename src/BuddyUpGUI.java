@@ -2,7 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.awt.EventQueue;
+import javax.swing.JFrame;
+import javax.swing.UIManager;
 /**
  *
  * @author ciano
@@ -13,10 +18,12 @@ public class BuddyUpGUI extends javax.swing.JFrame {
      * Creates new form BuddyUpGUI
      */
     private UserGUI userGUI;
+    private MatchChecker matchChecker; 
     
     public BuddyUpGUI (UserGUI userGUI) {
         initComponents();
         this.userGUI = userGUI;
+        this.matchChecker = new MatchChecker();
     }
 
     /**
@@ -45,9 +52,7 @@ public class BuddyUpGUI extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1054, 530));
         setMinimumSize(new java.awt.Dimension(1054, 530));
-        setPreferredSize(new java.awt.Dimension(1054, 530));
 
         btnMainMenu.setText("Menu");
         btnMainMenu.addActionListener(new java.awt.event.ActionListener() {
@@ -58,6 +63,11 @@ public class BuddyUpGUI extends javax.swing.JFrame {
 
         jComboBox1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Leinster", "Munster", "Connacht", "Ulster" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel1.setText("Location:");
@@ -67,6 +77,11 @@ public class BuddyUpGUI extends javax.swing.JFrame {
 
         jComboBox2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Traditional strength", "Cardio", "Crossfit", " " }));
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
+            }
+        });
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -77,6 +92,11 @@ public class BuddyUpGUI extends javax.swing.JFrame {
 
         jComboBox3.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Email", "Phone", "In-Person", "Video Calls " }));
+        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox3ActionPerformed(evt);
+            }
+        });
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rightsGrey.png"))); // NOI18N
 
@@ -124,14 +144,11 @@ public class BuddyUpGUI extends javax.swing.JFrame {
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(24, 24, 24))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(120, 120, 120)
-                                .addComponent(jLabel9))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(351, 351, 351)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(120, 120, 120)
+                        .addComponent(jLabel9))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(351, 351, 351)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(493, 493, 493)
@@ -184,6 +201,51 @@ public class BuddyUpGUI extends javax.swing.JFrame {
             userGUI.setLocationRelativeTo(null);
         }
     }//GEN-LAST:event_btnMainMenuActionPerformed
+    
+    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
+        // TODO add your handling code here:
+      String communicationType = jComboBox3.getSelectedItem().toString();
+        String location = jComboBox1.getSelectedItem().toString();
+        String workType = jComboBox2.getSelectedItem().toString();
+        findMatches(communicationType, location, workType);
+    }//GEN-LAST:event_jComboBox3ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+       String communicationType = jComboBox3.getSelectedItem().toString();
+        String location = jComboBox1.getSelectedItem().toString();
+        String workType = jComboBox2.getSelectedItem().toString();
+        findMatches(communicationType, location, workType);
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        // TODO add your handling code here:
+       String communicationType = jComboBox3.getSelectedItem().toString();
+        String location = jComboBox1.getSelectedItem().toString();
+        String workType = jComboBox2.getSelectedItem().toString();
+        findMatches(communicationType, location, workType);
+    }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    public void findMatches(String communicationType, String location, String workType) {
+        matchChecker.setPreferences(communicationType, location, workType);
+        ArrayList<String> possibleMatches = matchChecker.getPossibleMatches();
+
+        if (!possibleMatches.isEmpty()) {
+            StringBuilder matchedUserInfo = new StringBuilder("The following users match your preferences:\n");
+            for (String userInfo : possibleMatches) {
+                matchedUserInfo.append(userInfo).append("\n");
+            }
+            jTextArea1.setText(matchedUserInfo.toString());
+        } else {
+            jTextArea1.setText("No matches found.");
+        }
+    }
+
+
+
+
+
+
 
     /**
      * @param args the command line arguments
@@ -218,12 +280,15 @@ public class BuddyUpGUI extends javax.swing.JFrame {
             }
         });
     }
+    
+    
+ 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnMainMenu;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
+    public javax.swing.JComboBox<String> jComboBox1;
+    public javax.swing.JComboBox<String> jComboBox2;
+    public javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
