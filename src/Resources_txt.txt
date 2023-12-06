@@ -1,0 +1,18 @@
+exercise|cardio|https://www.bodybuilding.com
+exercise|cardio|https://www.fitnessblender.com
+exercise|strength|https://www.nerdfitness.com
+exercise|strength|https://www.stronglifts.com
+exercise|crossfit|https://www.crossfit.com
+exercise|crossfit|https://www.wodwell.com
+food|high protein|https://www.eatwell101.com
+food|high protein|https://www.myfitnesspal.com
+food|healthy|https://www.cookinglight.com
+food|healthy|https://www.eatingwell.com
+food|weight gain|https://www.healthline.com/nutrition/how-to-gain-weight
+food|weight gain|https://www.bodybuilding.com/nutrition/8-weight-gain-tips
+mood|yoga|https://www.yogajournal.com
+mood|yoga|https://www.doyogawithme.com
+mood|therapy|https://www.psychologytoday.com
+mood|therapy|https://www.goodtherapy.org
+mood|meditation|https://www.headspace.com
+mood|meditation|https://www.calm.com
