@@ -13,6 +13,7 @@ public abstract class Fit {
     private double hoursOutside;
     private int stepsTaken;
     private String fitGoal;
+
     
     
     User user = User.getInstance();
@@ -24,6 +25,7 @@ public abstract class Fit {
     String userAddress = user.getUserAddress();
     String userFitnessLevel = user.getUserFitnessLevel();
     int userMotivationLevel = user.getMotivationLevel();
+   
     
     
     // Add constructor to initialize Nutrition with input values
@@ -61,5 +63,27 @@ public abstract class Fit {
                 + "Fitness Goal: " + fitGoal;
         return message;
     }
+    
+    public double totalHoursExercised(){
+        return hoursExercised + hoursOutside;
+    }
+    
+    public String getTotalInformation(){
+        return "Total information";
+    }
+    
+    public String getEnoughSteps(){
+        int minimumSteps = 10000;
+        if (minimumSteps > stepsTaken) {
+            return "You have " + stepsTaken + " out of " + minimumSteps + " recommended steps, just more " + Math.abs(stepsTaken - minimumSteps) + " left!";
+        } else {
+            return "Amazing, keep up the good work! Doctors recommend at least 10k steps per day!";
+        }
+    }
+    
+    public String suggestExercises() {
+        return "";
+    }
+    
     
 }

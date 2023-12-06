@@ -46,6 +46,7 @@ public class FitGUI extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        txtCalculateButton = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -99,44 +100,44 @@ public class FitGUI extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(79, 79, 79)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel2)
-                                            .addComponent(jLabel1)
-                                            .addComponent(jLabel3)
-                                            .addComponent(jLabel4))
-                                        .addGap(86, 86, 86)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(cmbFitGoal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(txtStepsTaken, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addComponent(txtHoursExercised, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(txtHoursOutside, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel5))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(108, 108, 108)
-                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(30, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(btnCalculateFit)
-                                    .addComponent(btnMainMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(btnMainMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtCalculateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 499, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(26, 26, 26))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabel8)
-                                .addGap(146, 146, 146)))))
+                                .addGap(146, 146, 146))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addGap(154, 154, 154)
+                                    .addComponent(jLabel5))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(79, 79, 79)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel2)
+                                        .addComponent(jLabel1)
+                                        .addComponent(jLabel3)
+                                        .addComponent(jLabel4))
+                                    .addGap(86, 86, 86)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(cmbFitGoal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(txtStepsTaken, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(txtHoursExercised, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(txtHoursOutside, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(108, 108, 108)
+                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)))
                 .addComponent(jLabel6))
         );
         layout.setVerticalGroup(
@@ -169,7 +170,9 @@ public class FitGUI extends javax.swing.JFrame {
                     .addComponent(cmbFitGoal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnCalculateFit)
-                .addGap(119, 119, 119)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtCalculateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel8)
                 .addContainerGap())
         );
@@ -193,34 +196,72 @@ public class FitGUI extends javax.swing.JFrame {
 
     private void btnCalculateFitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalculateFitActionPerformed
         // TODO add your handling code here:
-        
-        double hoursExercised = Double.parseDouble(txtHoursExercised.getText());
-        double hoursOutisde = Double.parseDouble(txtHoursOutside.getText());
-        int stepsTaken = Integer.parseInt(txtStepsTaken.getText());
-        String fitGoal = "";
-        
-        Fit fit = null;
-        
-        if (cmbFitGoal.getSelectedItem().equals("Muscle Gain")) {
-            fitGoal = "Muscle Gain";
-            fit = new FitMuscleGain(hoursExercised,hoursOutisde, stepsTaken, fitGoal);
-        } else if (cmbFitGoal.getSelectedItem().equals("Fat Loss")) {
-            fitGoal = "Fat Loss";
-            fit = new FitFatLoss(hoursExercised,hoursOutisde, stepsTaken, fitGoal);
-        } else if (cmbFitGoal.getSelectedItem().equals("Body Maintenance")){
-            fitGoal = "Body Maintenance";
-            fit = new FitBodyMaintenance(hoursExercised,hoursOutisde, stepsTaken, fitGoal);
+    try {
+           double hoursExercised = validateAndParseDouble(txtHoursExercised.getText(), "Hours Exercised");
+           double hoursOutside = validateAndParseDouble(txtHoursOutside.getText(), "Hours Outside");
+           int stepsTaken = validateAndParseInt(txtStepsTaken.getText(), "Steps Taken");
+           String fitGoal = "";
+
+           Fit fit = null;
+
+           if (cmbFitGoal.getSelectedItem().equals("Muscle Gain")) {
+               fitGoal = "Muscle Gain";
+               fit = new FitMuscleGain(hoursExercised, hoursOutside, stepsTaken, fitGoal);
+           } else if (cmbFitGoal.getSelectedItem().equals("Fat Loss")) {
+               fitGoal = "Fat Loss";
+               fit = new FitFatLoss(hoursExercised, hoursOutside, stepsTaken, fitGoal);
+           } else if (cmbFitGoal.getSelectedItem().equals("Body Maintenance")) {
+               fitGoal = "Body Maintenance";
+               fit = new FitBodyMaintenance(hoursExercised, hoursOutside, stepsTaken, fitGoal);
+           }
+
+           //Calling the methods
+           String totalInformation = fit.getTotalInformation();
+           String suggestedExercises = fit.suggestExercises();
+           String enoughSteps = fit.getEnoughSteps();
+
+           txtCalculateButton.setText("<html>" + totalInformation + "<br>" +
+                   suggestedExercises + "<br>" + "<strong>" +
+                   enoughSteps + "</strong>" + "</html>");
+        } catch (NumberFormatException ex) {
+        JOptionPane.showMessageDialog(null, "Invalid input: Please enter valid numeric values.");
+        } catch (IllegalArgumentException ex) {
+        JOptionPane.showMessageDialog(null, ex.getMessage());
         }
-        
-        //Calling the methods
-        String text = fit.toString();
-        
-        JOptionPane.showMessageDialog(null, text);
-        
-        
-        
-        
-        
+   }
+
+   // Method to validate and parse double input from text fields
+   private double validateAndParseDouble(String input, String fieldName) throws NumberFormatException, IllegalArgumentException {
+       if (input.isEmpty()) {
+           throw new IllegalArgumentException(fieldName + " field is empty.");
+       }
+
+       try {
+           double value = Double.parseDouble(input);
+           if (value < 0) {
+               throw new IllegalArgumentException(fieldName + " cannot be negative.");
+           }
+           return value;
+       } catch (NumberFormatException ex) {
+           throw new NumberFormatException("Invalid input for " + fieldName + ". Please enter a valid numeric value.");
+       }
+   }
+
+   // Method to validate and parse integer input from text fields
+   private int validateAndParseInt(String input, String fieldName) throws NumberFormatException, IllegalArgumentException {
+       if (input.isEmpty()) {
+           throw new IllegalArgumentException(fieldName + " field is empty.");
+       }
+
+       try {
+           int value = Integer.parseInt(input);
+           if (value < 0) {
+               throw new IllegalArgumentException(fieldName + " cannot be negative.");
+           }
+           return value;
+       } catch (NumberFormatException ex) {
+           throw new NumberFormatException("Invalid input for " + fieldName + ". Please enter a valid integer value.");
+       }
     }//GEN-LAST:event_btnCalculateFitActionPerformed
 
     /**
@@ -272,6 +313,7 @@ public class FitGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel txtCalculateButton;
     private javax.swing.JTextField txtHoursExercised;
     private javax.swing.JTextField txtHoursOutside;
     private javax.swing.JTextField txtStepsTaken;
