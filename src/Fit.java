@@ -4,8 +4,8 @@
  */
 
 /**
- *
- * @author arthurkroth
+ * @author Arthur Kroth  Student Number: x22166971
+ * Group 1 - CA1 - Object Oriented Programming
  */
 public abstract class Fit {
     
@@ -15,7 +15,7 @@ public abstract class Fit {
     private String fitGoal;
 
     
-    
+    //Calling the User singleton class in case any information from the user is necessary.
     User user = User.getInstance();
          
     String userName = user.getUserName();
@@ -28,7 +28,7 @@ public abstract class Fit {
    
     
     
-    // Add constructor to initialize Nutrition with input values
+    //Constructor to initialize Nutrition with input values
     public Fit(double hoursExercised, double hoursOutside, int stepsTaken, String fitGoal) {
         this.hoursExercised = hoursExercised;
         this.hoursOutside = hoursOutside;
@@ -36,7 +36,7 @@ public abstract class Fit {
         this.fitGoal = fitGoal;
     }
     
-        // Getter methods for retrieving calculated values
+    //Getter methods for retrieving calculated values
     public double getHoursExercised() {
         return hoursExercised;
     }
@@ -53,10 +53,9 @@ public abstract class Fit {
         return fitGoal;
     }
     
-        @Override
+    @Override
+    //Overriding toSting message to display the default information about the class
     public String toString() {
-        // Perform your nutrition calculations here using the stored input values
-        // For demonstration purposes, let's say we are just printing a message
         String message = "Hours Exercised: " + hoursExercised + "\n"
                 + "Hours Spent Outside: " + hoursOutside + "\n"
                 + "Steps Taken: " + stepsTaken + "\n"
@@ -64,16 +63,19 @@ public abstract class Fit {
         return message;
     }
     
+    //Public method to get the total hours exercised
     public double totalHoursExercised(){
         return hoursExercised + hoursOutside;
     }
     
+    //Public method to get the total information, method is overridden on subclasses.
     public String getTotalInformation(){
         return "Total information";
     }
     
+    //Public method to get if the user reached the total steps goal, minimumSteps is hardcoded to 10k steps.
     public String getEnoughSteps(){
-        int minimumSteps = 10000;
+        final int minimumSteps = 10000;
         if (minimumSteps > stepsTaken) {
             return "You have " + stepsTaken + " out of " + minimumSteps + " recommended steps, just more " + Math.abs(stepsTaken - minimumSteps) + " left!";
         } else {
@@ -81,6 +83,7 @@ public abstract class Fit {
         }
     }
     
+    //Setting up public method to override on my subclasses
     public String suggestExercises() {
         return "";
     }

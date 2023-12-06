@@ -7,8 +7,8 @@ import javax.swing.JOptionPane;
  */
 
 /**
- *
- * @author arthurkroth
+ * @author Arthur Kroth  Student Number: x22166971
+ * Group 1 - CA1 - Object Oriented Programming
  */
 public class FitGUI extends javax.swing.JFrame {
 
@@ -197,13 +197,16 @@ public class FitGUI extends javax.swing.JFrame {
     private void btnCalculateFitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalculateFitActionPerformed
         // TODO add your handling code here:
     try {
+           //Getting information from the text fields from FitGUI.
            double hoursExercised = validateAndParseDouble(txtHoursExercised.getText(), "Hours Exercised");
            double hoursOutside = validateAndParseDouble(txtHoursOutside.getText(), "Hours Outside");
            int stepsTaken = validateAndParseInt(txtStepsTaken.getText(), "Steps Taken");
            String fitGoal = "";
-
+           
+           //Instantiating fit as null as at this point we don't know what the user will select.
            Fit fit = null;
 
+           //Logic block to check that option was selected by the user, creating the subclass instance and passing the the constructor.
            if (cmbFitGoal.getSelectedItem().equals("Muscle Gain")) {
                fitGoal = "Muscle Gain";
                fit = new FitMuscleGain(hoursExercised, hoursOutside, stepsTaken, fitGoal);
@@ -215,14 +218,16 @@ public class FitGUI extends javax.swing.JFrame {
                fit = new FitBodyMaintenance(hoursExercised, hoursOutside, stepsTaken, fitGoal);
            }
 
-           //Calling the methods
+           //Calling the methods from the instantiable class
            String totalInformation = fit.getTotalInformation();
            String suggestedExercises = fit.suggestExercises();
            String enoughSteps = fit.getEnoughSteps();
 
+           //Updating the label text to show the result of all the operation back to the FitGUI.
            txtCalculateButton.setText("<html>" + totalInformation + "<br>" +
                    suggestedExercises + "<br>" + "<strong>" +
                    enoughSteps + "</strong>" + "</html>");
+          //Start of the exception handler process.
         } catch (NumberFormatException ex) {
         JOptionPane.showMessageDialog(null, "Invalid input: Please enter valid numeric values.");
         } catch (IllegalArgumentException ex) {
@@ -230,7 +235,7 @@ public class FitGUI extends javax.swing.JFrame {
         }
    }
 
-   // Method to validate and parse double input from text fields
+   //Method to validate and parse double input from text fields
    private double validateAndParseDouble(String input, String fieldName) throws NumberFormatException, IllegalArgumentException {
        if (input.isEmpty()) {
            throw new IllegalArgumentException(fieldName + " field is empty.");
@@ -247,7 +252,7 @@ public class FitGUI extends javax.swing.JFrame {
        }
    }
 
-   // Method to validate and parse integer input from text fields
+   //Method to validate and parse integer input from text fields
    private int validateAndParseInt(String input, String fieldName) throws NumberFormatException, IllegalArgumentException {
        if (input.isEmpty()) {
            throw new IllegalArgumentException(fieldName + " field is empty.");

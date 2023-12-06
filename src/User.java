@@ -4,12 +4,15 @@
  */
 
 /**
- *
- * @author arthurkroth
+ * @author Arthur Kroth  Student Number: x22166971
+ * Group 1 - CA1 - Object Oriented Programming
  */
 public class User extends UserGUI{
+    
+    //Singleton instance of the User class
     private static User instance;
     
+    //User attributes
     private String userName;
     private int userAge;
     private int userHeight;
@@ -20,6 +23,7 @@ public class User extends UserGUI{
     
     //Constructor with all parameters.
     public User(String userName, int userAge, int userHeight, double userWeight, String userAddress, String userFitnessLevel, int motivationLevel){
+        //Initializing user attributes
         this.userName = userName;
         this.userAge = userAge;
         this.userHeight = userHeight;
@@ -31,6 +35,7 @@ public class User extends UserGUI{
     
     //Default Constructor
     public User(){
+        //Initializing user attributes with default values
         userName = "";
         userAge = 0;
         userHeight = 0;
@@ -40,6 +45,7 @@ public class User extends UserGUI{
         motivationLevel = 0;
     }
     
+    //Singleton method to get the instance of User
     public static User getInstance() {
         if (instance == null) {
             instance = new User();
@@ -48,7 +54,7 @@ public class User extends UserGUI{
     }
     
 
-    //SETTERS
+    //Setters
     public void setUserName(String userName) {
         this.userName = userName;
     }
@@ -77,7 +83,7 @@ public class User extends UserGUI{
         this.motivationLevel = motivationLevel;
     }
     
-    //GETTERS
+    //Getters
 
     public String getUserName() {
         return userName;
@@ -105,9 +111,5 @@ public class User extends UserGUI{
 
     public int getMotivationLevel(){
         return motivationLevel;
-    }
-    
-    
-    
-    
+    }    
 }

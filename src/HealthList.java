@@ -11,33 +11,36 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
- *
- * @author arthurkroth
+ * @author Arthur Kroth  Student Number: x22166971
+ * Group 1 - CA1 - Object Oriented Programming
  */
 public class HealthList {
+    //ArrayList to store smoker tips
     private ArrayList<String> smokerTipsList;
 
+    //Constructor to initialize HealthList and populate smokerTipsList from a file or hardcoded values
     public HealthList() {
         this.smokerTipsList = new ArrayList<>();
         try {
-            // Assuming the file is in the same directory as your .java file
+            //Attempt to read smoker tips from a file
             String absolutePath = new File("src").getAbsolutePath() + "/smoker_tips.txt";
             this.initializeSmokerTipsFromFile(absolutePath);
         } catch (IOException e) {
+            //If file reading fails, use hardcoded tips
             System.err.println("Error reading file: " + e.getMessage());
             this.initializeHardcodedSmokerTips();
         }
     }
-
-   private void initializeSmokerTipsFromFile(String filename) throws IOException {
-    try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
-        String line;
+   //Method to initialize smoker tips from a file
+    private void initializeSmokerTipsFromFile(String filename) throws IOException {
+        try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
+            String line;
         while ((line = br.readLine()) != null) {
             smokerTipsList.add(line);
         }
+        }   
     }
-}
-
+    //Method to initialize smoker tips with hardcoded values
     private void initializeHardcodedSmokerTips() {
         smokerTipsList.add("Consider joining a support group to quit smoking.");
         smokerTipsList.add("Identify your reasons for quitting and remind yourself of them regularly.");
@@ -56,10 +59,11 @@ public class HealthList {
         smokerTipsList.add("Track your progress and celebrate each day without smoking as a personal achievement.");
         smokerTipsList.add("Consider the financial savings from quitting smoking and use it as motivation for other goals.");
     }
-
+    
+    //Method to retrieve a random smoker tip from the list
     public String getRandomSmokerTip() {
         if (smokerTipsList.isEmpty()) {
-            // If the list is empty, return a default tip or handle as needed
+            //Default value if for some reason the file fails and the hardcoded code fails.
             return "No tips available.";
         }
 

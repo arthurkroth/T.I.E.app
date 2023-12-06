@@ -7,8 +7,8 @@ import javax.swing.JOptionPane;
  */
 
 /**
- *
- * @author arthurkroth
+ * @author Arthur Kroth  Student Number: x22166971
+ * Group 1 - CA1 - Object Oriented Programming
  */
 public class HealthGUI extends javax.swing.JFrame {
 
@@ -255,7 +255,7 @@ public class HealthGUI extends javax.swing.JFrame {
             double hoursOfSleep = validateAndParseDouble(txtSleepPerDay.getText(), "Hours of Sleep");
             boolean isSmoker = cmbSmokeYes.isSelected();
 
-            
+            //Validation to at least one option be selected.
             if (!isSmoker) {
                 throw new IllegalArgumentException("Please select whether you smoke or not.");
             }
@@ -275,32 +275,38 @@ public class HealthGUI extends javax.swing.JFrame {
             String enoughSleep = health.generateSleepMessage(hoursOfSleep);
             String alcohol = health.generateAlcoholMessage();
 
+            //Updating the label text to show the result of all the operation back to the HealthGUI.
             lblCalculateHealth.setText("<html>" + waterIntake + "<br/>" +
                     enoughSleep + "<br/>" +
                     smoker + "<br/>" +
                     alcohol + "</html>");
+            //Handle exceptions related to number format errors
             } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
+            //Handle exceptions related to invalid arguments
             } catch (IllegalArgumentException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
             }
     }
 
-    // Method to validate and parse double input from text fields
-    private double validateAndParseDouble(String input, String fieldName) throws NumberFormatException, IllegalArgumentException {
-        if (input.isEmpty()) {
-            throw new IllegalArgumentException(fieldName + " field is empty.");
-        }
+        // Method to validate and parse double input from text fields
+        private double validateAndParseDouble(String input, String fieldName) throws NumberFormatException, IllegalArgumentException {
+            if (input.isEmpty()) {
+                //Throw exception if the input field is empty
+                throw new IllegalArgumentException(fieldName + " field is empty.");
+            }
 
-    try {
-        double value = Double.parseDouble(input);
-        if (value < 0) {
-            throw new IllegalArgumentException(fieldName + " cannot be negative.");
+        try {
+            double value = Double.parseDouble(input);
+            if (value < 0) {
+                //Throw exception if the value is negative
+                throw new IllegalArgumentException(fieldName + " cannot be negative.");
+            }
+            return value;
+        } catch (NumberFormatException ex) {
+            //Throw exception for invalid numeric input
+            throw new NumberFormatException("Invalid input for " + fieldName + ". Please enter a valid numeric value.");
         }
-        return value;
-    } catch (NumberFormatException ex) {
-        throw new NumberFormatException("Invalid input for " + fieldName + ". Please enter a valid numeric value.");
-    }
         
     }//GEN-LAST:event_btcCalculateHealthActionPerformed
 

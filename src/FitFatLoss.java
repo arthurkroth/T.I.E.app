@@ -8,8 +8,8 @@ import java.util.Random;
  */
 
 /**
- *
- * @author arthurkroth
+ * @author Arthur Kroth  Student Number: x22166971
+ * Group 1 - CA1 - Object Oriented Programming
  */
 public class FitFatLoss extends Fit{
     
@@ -26,10 +26,9 @@ public class FitFatLoss extends Fit{
         this.fitGoal = fitGoal;
     }
     
+    //Overriding toSting message to display the default information about the class + "Fit Fat Loss".
     @Override
     public String toString() {
-        // Perform your nutrition calculations here using the stored input values
-        // For demonstration purposes, let's say we are just printing a message
         String message = "Hours Exercised: " + hoursExercised + "\n"
                 + "Hours Spent Outside: " + hoursOutside + "\n"
                 + "Steps Taken: " + stepsTaken + "\n"
@@ -38,12 +37,13 @@ public class FitFatLoss extends Fit{
         return message;
     }
     
-        @Override
+    //Overridden Public method to get the total hours exercised
+    @Override
     public double totalHoursExercised(){
         return hoursExercised + hoursOutside;
     }
     
-    
+    //Overridden method to get the total information, logic conditions applied to decide if the user is over exercising.  
     @Override
     public String getTotalInformation() {
         if (totalHoursExercised() < 4 && fitGoal.equals("Fat Loss")) {
@@ -73,13 +73,14 @@ public class FitFatLoss extends Fit{
         return fatBurningExercises.get(randomIndex);
     }
     
-        @Override
-        public String getEnoughSteps(){
-            int minimumSteps = 10000;
-            if (minimumSteps > stepsTaken) {
-                return "You have " + stepsTaken + " out of " + minimumSteps + " recommended steps, just more " + Math.abs(stepsTaken - minimumSteps) + " left!";
-            } else {
-                return "Amazing, keep up the good work! Doctors recommend at least 10k steps per day!";
+    //Overridden method to get if the user reached the total steps goal, minimumSteps is hardcoded to 10k steps.
+    @Override
+    public String getEnoughSteps(){
+        int minimumSteps = 10000;
+        if (minimumSteps > stepsTaken) {
+            return "You have " + stepsTaken + " out of " + minimumSteps + " recommended steps, just more " + Math.abs(stepsTaken - minimumSteps) + " left!";
+        } else {
+            return "Amazing, keep up the good work! Doctors recommend at least 10k steps per day!";
         }
     }
     

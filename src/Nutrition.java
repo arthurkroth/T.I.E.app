@@ -6,18 +6,17 @@
 */
  
 /**
-*
-* @author arthurkroth
-*/
+ * @author Arthur Kroth  Student Number: x22166971
+ * Group 1 - CA1 - Object Oriented Programming
+ */
 public class Nutrition {
     
-//
     private int caloriesIntake;
     private int carbsIntake;
     private int proteinIntake;
     private int burnedCalories;
     
-    //
+    //Calling the User singleton class in case any information from the user is necessary.
     User user = User.getInstance();   
     int userHeigth = user.getUserHeigth();
     double userWeight = user.getUserWeight();
@@ -48,9 +47,8 @@ public class Nutrition {
     }
  
     @Override
+    //Overriding toSting message to display the default information about the class
     public String toString() {
-        // Perform your nutrition calculations here using the stored input values
-        // For demonstration purposes, let's say we are just printing a message
         String message = "Calories Intake: " + caloriesIntake + "\n"
                 + "Carbs Intake: " + carbsIntake + "\n"
                 + "Protein Intake: " + proteinIntake + "\n"
@@ -58,19 +56,21 @@ public class Nutrition {
         return message;
     }
     
+    //Method to calculate the user's BMI
     public double calculateBMI() {
     // BMI Formula: weight (kg) / height (m)^2
-    double bmi = 0.00;
-    double heightInMeters = userHeigth / 100.0; // Assuming userHeight is in centimeters
-    bmi = userWeight / (heightInMeters * heightInMeters);
-    String formattedBMI = String.format("%.2f", bmi);
-    return Double.parseDouble(formattedBMI);
-}
+        double bmi = 0.00;
+        double heightInMeters = userHeigth / 100.0; //userHeight is in centimeters
+        bmi = userWeight / (heightInMeters * heightInMeters);
+        String formattedBMI = String.format("%.2f", bmi); //Parsing to String to be able to uset the format() method.
+        return Double.parseDouble(formattedBMI);//Parsinbg back to double.
+    }
     
+    //Method to calculate the if the protein intake is enough or not.
     public String evaluateProteinIntake() {
         // Protein intake recommendation: depends on various factors, 
-        // but let's assume a range (e.g., 0.8 - 1.2 grams per kg of body weight)
-        double proteinPerKg = 2.0; // Set your recommended protein intake per kg here
+        // but let's assume 2.0 grams per kg of body weight.
+        double proteinPerKg = 2.0; //Hardcoded Protein per KG.
         double totalProteinIntake = proteinIntake;
 
         double recommendedProteinIntakeLower = userWeight * 0.8 * proteinPerKg;
@@ -86,12 +86,11 @@ public class Nutrition {
         }
     }
     
-    //
+    //Method to calculate the if the carbs intake is enough or not.
     public String evaluateCarbsIntake() {
         double totalCarbsIntake = carbsIntake;
 
-        // Set your recommended carbs intake per day here
-        double recommendedCarbsIntake = 250.0; // Assuming a value for recommended carbs intake
+        double recommendedCarbsIntake = 250.0; //Hardcodidng a value for recommended carbs intake
 
         if (totalCarbsIntake < recommendedCarbsIntake) {
             return "You are ingesting fewer carbs than recommended.";
@@ -102,7 +101,7 @@ public class Nutrition {
         }
     }
 
-    //
+    //Method to calculate the weight change trend.
     public String evaluateWeightChangeTrend(String userFitnessLevel) {
         double bmi = calculateBMI();
 
@@ -125,24 +124,24 @@ public class Nutrition {
         }
     }
     
-    //
+    //Method to estimate the weight change based on user's details.
     public String estimateWeightChange() {
-        // Calculate the net calorie balance
+        //Calculating the net calorie balance
         int netCalories = caloriesIntake - burnedCalories;
 
-        // Calculate the calorie deficit/surplus for weight change
-        // 1 kilogram = 7700 calories (approx.)
+        //Calculating the calorie deficit/surplus for weight change
+        //1 kilogram = 7700 calories (approx.)
         double caloriesPerKilogram = 7700.0;
 
-        // Assuming 1 week for weight change estimation
+        //Assuming 1 week for weight change estimation
         int weeks = 1;
 
         double weightChangePerWeek = netCalories / (caloriesPerKilogram * weeks);
 
-        // Getting the absolute value of weightChangePerWeek before formatting
+        //Getting the absolute value of weightChangePerWeek before formatting
         double absoluteWeightChange = Math.abs(weightChangePerWeek);
 
-        // Formatting weight change to display only two decimal places
+        //Formatting weight change to display only two decimal places
         String formattedWeightChange = String.format("%.2f", absoluteWeightChange);
 
         if (weightChangePerWeek < 0) {

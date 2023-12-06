@@ -8,8 +8,8 @@ import java.util.Random;
  */
 
 /**
- *
- * @author arthurkroth
+ * @author Arthur Kroth  Student Number: x22166971
+ * Group 1 - CA1 - Object Oriented Programming
  */
 public class FitMuscleGain extends Fit{
     
@@ -18,6 +18,7 @@ public class FitMuscleGain extends Fit{
     private int stepsTaken;
     private String fitGoal;
     
+    //Constructor to gather information from the superclass.
     public FitMuscleGain(double hoursExercised, double hoursOutside, int stepsTaken, String fitGoal) {
         super(hoursExercised, hoursOutside, stepsTaken, fitGoal);
         this.hoursExercised = hoursExercised;
@@ -39,11 +40,13 @@ public class FitMuscleGain extends Fit{
         return message;
     }
     
+    
     @Override
     public double totalHoursExercised(){
         return hoursExercised + hoursOutside;
     }
-
+    
+    //Overridden method to get the total information, logic conditions applied to decide if the user is over exercising.    
     @Override
     public String getTotalInformation() {
         if (totalHoursExercised() < 3 && fitGoal.equals("Muscle Gain")) {
@@ -58,7 +61,8 @@ public class FitMuscleGain extends Fit{
     }
     
     
-     // Method to suggest specific muscle groups to focus on
+    //Method to suggest specific muscle groups to focus on
+    //ArrayList
     @Override
     public String suggestExercises() {
         ArrayList<String> muscleGroups = new ArrayList<>();
@@ -74,6 +78,7 @@ public class FitMuscleGain extends Fit{
         return muscleGroups.get(randomIndex);
     }
     
+    //Overridden method to get if the user reached the total steps goal, minimumSteps is hardcoded to 10k steps.
     @Override
     public String getEnoughSteps(){
         int minimumSteps = 10000;

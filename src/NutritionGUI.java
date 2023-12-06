@@ -7,8 +7,8 @@ import javax.swing.JOptionPane;
  */
 
 /**
- *
- * @author arthurkroth
+ * @author Arthur Kroth  Student Number: x22166971
+ * Group 1 - CA1 - Object Oriented Programming
  */
 public class NutritionGUI extends javax.swing.JFrame {
 
@@ -223,14 +223,14 @@ public class NutritionGUI extends javax.swing.JFrame {
         int proteinIntake = validateAndParseInt(txtProteinIntake.getText(), "Protein Intake");
         int burnedCalories = validateAndParseInt(txtCaloriesBurned.getText(), "Calories Burned");
 
-        // Create Nutrition instance with validated input
+        //Create Nutrition instance with validated input
         nutrition = new Nutrition(caloriesIntake, carbsIntake, proteinIntake, burnedCalories);
 
-        // Get user's fitness level
+        //Get user's fitness level from the User singleton class
         User user = User.getInstance();
         String userFitnessLevel = user.getUserFitnessLevel();
 
-        // Calling the methods
+        //Calling the methods
         String nutritionResult = nutrition.toString();
         double bmi = nutrition.calculateBMI();
         String protein = nutrition.evaluateProteinIntake();
@@ -238,10 +238,8 @@ public class NutritionGUI extends javax.swing.JFrame {
         String evaluateWeight = nutrition.evaluateWeightChangeTrend(userFitnessLevel);
         String weightChange = nutrition.estimateWeightChange();
 
-        // Display the calculated nutrition information in a JOptionPane
-        JOptionPane.showMessageDialog(null, "Keep up the good work!!");
 
-        // Update label with the calculated information
+        //Update label with the calculated information
         lblCalculate.setText("<html>Your BMI is: " + bmi + "<br/>" +
                 protein + "<br/>" +
                 carbs + "<br/>" +
@@ -254,7 +252,7 @@ public class NutritionGUI extends javax.swing.JFrame {
         }
     }
 
-    // Method to validate and parse integer input from text fields
+    //Method to validate and parse integer input from text fields
     private int validateAndParseInt(String input, String fieldName) throws NumberFormatException, IllegalArgumentException {
         if (input.isEmpty()) {
             throw new IllegalArgumentException(fieldName + " field is empty.");

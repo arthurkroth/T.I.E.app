@@ -7,8 +7,8 @@ import java.util.ArrayList;
  */
 
 /**
- *
- * @author arthurkroth
+ * @author Arthur Kroth  Student Number: x22166971
+ * Group 1 - CA1 - Object Oriented Programming
  */
 public class Health {
     
@@ -17,17 +17,15 @@ public class Health {
     private double hoursOfSleep;
     private boolean isSmoker;
     
-    
+    //Declaring an instace variable to hold a reference to an object of type HealthList
     private HealthList healthList;
     
-    //
+    //Calling the User singleton class in case any information from the user is necessary.
     User user = User.getInstance();
     double userWeight = user.getUserWeight();
-    String userAddress = user.getUserAddress();
-    String userFitnessLevel = user.getUserFitnessLevel();
-    int userMotivationLevel = user.getMotivationLevel();
     
-        // Add constructor to initialize Nutrition with input values
+    
+    //Add constructor to initialize Nutrition with input values
     public Health(double alcoholConsumed, double waterConsumed, double hoursOfSleep, boolean isSmoker) {
         this.alcoholConsumed = alcoholConsumed;
         this.waterConsumed = waterConsumed;
@@ -38,8 +36,6 @@ public class Health {
         this.healthList = new HealthList();
         
     }
-    
-    
     
     // Getter methods for retrieving calculated values
     public double getAlcoholConsumed() {
@@ -58,9 +54,10 @@ public class Health {
         return isSmoker;
     }
  
+    
     @Override
+    //Overriding toSting message to display the default information about the class
     public String toString() {
-        // Perform your health calculations here using the stored input values
         String message = "Alcohol Consumed: " + alcoholConsumed + "\n"
                 + "Water Consumed: " + waterConsumed + "\n"
                 + "Hours Of Sleep: " + hoursOfSleep + "\n"
@@ -76,15 +73,17 @@ public class Health {
         return "I'm really glad to know that you're not a smoker! Well done!";
     }
     
+    //Method to calculate the minimum recomended ingestion of water based on user's body weight
     public double calculateRecommendedWaterIntake() {
-        // Typical recommendation: 30-35 milliliters per kilogram of body weight
+        //Typical recommendation: 30-35 milliliters per kilogram of body weight
         double waterIntakePerKg = 30; // Default value in milliliters
 
-        // Calculate recommended water intake based on user's weight
+        //Calculate recommended water intake based on user's weight
         double recommendedWaterIntake = waterIntakePerKg * userWeight;
         return recommendedWaterIntake/1000;
     }
     
+    //Method to get the result of the recommended water intake method and append it to a String to show it back to the user.
     public String recommendedWaterIntake(){
         
         if (waterConsumed < calculateRecommendedWaterIntake()) {
@@ -94,8 +93,9 @@ public class Health {
         }
     }
     
+    //Method to check if the user is getting enough sleep time.
     public String generateSleepMessage(double hoursOfSleep) {
-        final double recommendedSleepHours = 7.0; // Recommended hours of sleep
+        final double recommendedSleepHours = 7.0; //Hard coded recommended hours of sleep
 
         if (hoursOfSleep >= recommendedSleepHours) {
             return "You're getting enough sleep. Keep it up!";
@@ -104,6 +104,7 @@ public class Health {
         }
     }
     
+    //Method to vertify if the user is consuming more alcohol than 0.5l per day, it only gives advice if the user is consuming more than 0.5l
     public String generateAlcoholMessage(){
         if (alcoholConsumed > 0.5) {
             return "Life is tough, but drinking alcohol everyday will not help, mind yourself";
