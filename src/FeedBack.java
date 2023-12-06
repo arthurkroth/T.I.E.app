@@ -7,8 +7,11 @@
     import javax.swing.JSlider;
     import javax.swing.JTextArea;
 /**
- *
- * @author ciano
+ * FeedBack class represents the feedback provided by the user.
+ * It includes the rating, whether the user would use the app again,
+ * whether the user achieved their goals, and any additional feedback text.
+ * Author: Cian O'Connor 
+ * Student number: x22109668
  */
 public class FeedBack {
     private int rating; 
@@ -16,23 +19,42 @@ public class FeedBack {
     private boolean achievedGoals = true;
     private String feedbackText; 
     
-    
+    /**
+     * Sets the rating given by the user.
+     * @param rating The user's rating.
+     */
     public void setRating (int rating) {
         this.rating = rating; 
     }
     
+    /**
+     * Sets whether the user would use the app again.
+     * @param wouldUseAgain True if the user would use the app again, false otherwise.
+     */
     public void setWouldUseAgain (boolean wouldUseAgain) {
         this.wouldUseAgain = wouldUseAgain; 
     }
-
+    
+    /**
+     * Sets whether the user achieved their goals.
+     * @param achieveGoals True if the user achieved their goals, false otherwise.
+     */
     public void setAchievedGoals(boolean achieveGoals) {
         this.achievedGoals = achievedGoals;
     }
-
+    
+    /**
+     * Sets additional feedback text provided by the user.
+     * @param feedbackText The feedback text.
+     */
     public void setFeedbackText(String feedbackText) {
         this.feedbackText = feedbackText;
     }
     
+    /**
+     * Processes the feedback and returns a result message.
+     * @return A message based on the feedback.
+     */
      public String processFeedback() {
 if ((rating >= 4) && (wouldUseAgain || achievedGoals)) {
         // Positive feedback

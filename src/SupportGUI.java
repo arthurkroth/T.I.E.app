@@ -3,41 +3,29 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 import javax.swing.JOptionPane;
+
 /**
- *
- * @author ciano
+ * SupportGUI class represents the graphical user interface for T.I.E Support.
+ * It allows users to provide feedback on their experience.
+ * Author: Cian O'Connor 
+ * Student number: x22109668
  */
+
 public class SupportGUI extends javax.swing.JFrame {
-    /**
-     * Creates new form SupportGUI
-     */
+   
+    //Instance Variables 
     private UserGUI userGUI;
     private FeedBack feedBack; 
     
+    /**
+     * Creates new form SupportGUI
+     */
     public SupportGUI(UserGUI userGUI) {
         initComponents();
         this.userGUI = userGUI;
-        feedBack = new FeedBack(); 
-        
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+        feedBack = new FeedBack();   
     }
-     private void handleFeedbackSubmission() {
-        if (jRadioButton1.isSelected() && jRadioButton3.isSelected()) {
-            feedBack.setRating(jSlider1.getValue());
-            feedBack.setWouldUseAgain(jRadioButton1.isSelected());
-            feedBack.setAchievedGoals(jRadioButton3.isSelected());
-            feedBack.setFeedbackText(jTextArea1.getText());
-
-            String feedbackMessage = feedBack.processFeedback();
-            JOptionPane.showMessageDialog(this, feedbackMessage, "Feedback Result", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(this, "Please answer both questions before submitting feedback.", "Incomplete Feedback", JOptionPane.WARNING_MESSAGE);
-        }
-    }
+     
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -51,6 +39,7 @@ public class SupportGUI extends javax.swing.JFrame {
         jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
         jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
         buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
         btnMainMenu = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
@@ -134,38 +123,22 @@ public class SupportGUI extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel9.setText("Would you use T.I.E again?");
 
+        buttonGroup1.add(jRadioButton1);
         jRadioButton1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jRadioButton1.setText("Yes");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
-            }
-        });
 
+        buttonGroup1.add(jRadioButton2);
         jRadioButton2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jRadioButton2.setText("No");
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
-            }
-        });
 
         jLabel11.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel11.setText("Did T.I.E help you achieve your goals?");
 
+        buttonGroup2.add(jRadioButton3);
         jRadioButton3.setText("Yes");
-        jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton3ActionPerformed(evt);
-            }
-        });
 
+        buttonGroup2.add(jRadioButton4);
         jRadioButton4.setText("No");
-        jRadioButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton4ActionPerformed(evt);
-            }
-        });
 
         jLabel10.setFont(new java.awt.Font("LiSong Pro", 1, 50)); // NOI18N
         jLabel10.setText("T.I.E Support");
@@ -215,15 +188,15 @@ public class SupportGUI extends javax.swing.JFrame {
                                 .addComponent(jRadioButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(20, 20, 20)
-                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(20, 20, 20)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 459, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(171, 171, 171)
                                 .addComponent(jLabel8)
                                 .addGap(26, 26, 26)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addComponent(jLabel6)))
                         .addGap(18, 18, 18)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -281,6 +254,11 @@ public class SupportGUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    /**
+     * Event handler for the Main Menu button.
+     * @param evt ActionEvent triggered by the button.
+     */
     private void btnMainMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMainMenuActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
@@ -290,52 +268,50 @@ public class SupportGUI extends javax.swing.JFrame {
             userGUI.setLocationRelativeTo(null);
         }
     }//GEN-LAST:event_btnMainMenuActionPerformed
-
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-        // TODO add your handling code here:
-        // Handle the submit button action
-         jButton1ActionPerformed(evt);
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
-
+    
+    /**
+     * Event handler for the Submit button.
+     * @param evt ActionEvent triggered by the button.
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if ((jRadioButton1.isSelected() || jRadioButton2.isSelected()) && 
-        (jRadioButton3.isSelected() || jRadioButton4.isSelected())) {
-        // Set the rating from the slider value
-        feedBack.setRating(jSlider1.getValue());
+        // Check if the button is disabled to avoid duplicate submissions
+           if (!jButton1.isEnabled()) {
+            return;
+        }
 
-        // Set the "Would you use T.I.E again?" value
-        feedBack.setWouldUseAgain(jRadioButton1.isSelected());
+        jButton1.setEnabled(false);
 
-        // Set the "Did T.I.E help you achieve your goals?" value
-        feedBack.setAchievedGoals(jRadioButton3.isSelected());
+        // Check if both questions are answered
+        if ((jRadioButton1.isSelected() || jRadioButton2.isSelected()) &&
+            (jRadioButton3.isSelected() || jRadioButton4.isSelected())) {
 
-        // Set the feedback text
-        feedBack.setFeedbackText(jTextArea1.getText());
+            // Set the rating from the slider value
+            feedBack.setRating(jSlider1.getValue());
 
-        // Process the feedback and get the result message
-        String feedbackMessage = feedBack.processFeedback();
+            // Set the "Would you use T.I.E again?" value
+            feedBack.setWouldUseAgain(jRadioButton1.isSelected());
 
-        // Display the feedback message to the user (you can use JOptionPane or a JLabel)
-        JOptionPane.showMessageDialog(this, feedbackMessage, "Feedback Result", JOptionPane.INFORMATION_MESSAGE);
-    } else {
-        // Inform the user that both questions need to be answered
-        JOptionPane.showMessageDialog(this, "Please answer both questions before submitting feedback.", "Incomplete Feedback", JOptionPane.WARNING_MESSAGE);
-    }
+            // Set the "Did T.I.E help you achieve your goals?" value
+            feedBack.setAchievedGoals(jRadioButton3.isSelected());
+
+            // Set the feedback text
+            feedBack.setFeedbackText(jTextArea1.getText());
+
+            // Process the feedback and get the result message
+            String feedbackMessage = feedBack.processFeedback();
+
+            // Display the feedback message to the user
+            JOptionPane.showMessageDialog(this, feedbackMessage, "Feedback Result", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            // Inform the user that both questions need to be answered
+            JOptionPane.showMessageDialog(this, "Please answer both questions before submitting feedback.", "Incomplete Feedback", JOptionPane.WARNING_MESSAGE);
+        }
+         // Enable the button after processing feedback
+        jButton1.setEnabled(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton3ActionPerformed
-
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
-
-    private void jRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton4ActionPerformed
-
     /**
+     * Main method to launch the application.
      * @param args the command line arguments
      */
     public static void main(String args[]) {
@@ -372,6 +348,7 @@ public class SupportGUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnMainMenu;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JButton jButton1;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JLabel jLabel1;
