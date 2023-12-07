@@ -13,9 +13,6 @@ import java.awt.event.ActionListener;
  */
 public class StressGUI extends javax.swing.JFrame implements ActionListener{
 
-    /**
-     * Creates new form StressGUI
-     */
     
     private UserGUI userGUI;
     
@@ -180,6 +177,7 @@ public class StressGUI extends javax.swing.JFrame implements ActionListener{
         // TODO add your handling code here:
         this.setVisible(false);
 
+        // displlay user GUI window
         if(userGUI != null){
             userGUI.setVisible(true);
             userGUI.setLocationRelativeTo(null);

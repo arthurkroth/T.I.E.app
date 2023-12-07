@@ -2,10 +2,8 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -17,9 +15,6 @@ import java.io.IOException;
  */
 public class MoodGUI extends javax.swing.JFrame implements ActionListener {
 
-    /**
-     * Creates new form MoodGUI
-     */
     private UserGUI userGUI;
     private static final String FILE_NAME = "mood";
 
@@ -29,11 +24,15 @@ public class MoodGUI extends javax.swing.JFrame implements ActionListener {
         checkAndCreateFile();
     }
 
+    // Method to check if the file exists, and create it if it doesn't
     private void checkAndCreateFile() {
+        
         try {
             FileWriter fileWriter = new FileWriter(FILE_NAME, true);
             fileWriter.close();
         } catch (IOException ex) {
+            
+            // Display an error message if creating the file fails
             JOptionPane.showMessageDialog(null, "Error creating the file: " + ex.getMessage());
         }
     }
@@ -195,6 +194,8 @@ public class MoodGUI extends javax.swing.JFrame implements ActionListener {
 
     private void btnMainMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMainMenuActionPerformed
         // TODO add your handling code here:
+        
+        // Hide the current window and show the UserGUI window
         this.setVisible(false);
 
         if (userGUI != null){
@@ -206,8 +207,9 @@ public class MoodGUI extends javax.swing.JFrame implements ActionListener {
     private void moodTipsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moodTipsActionPerformed
         // TODO add your handling code here:
         
-    Mood mood = new Mood();
-    mood.moodTipsButtonClick(moodLevel.getText(), socialiseRegurlaly.getText(), unitsOfAlcohol.getText(), hoursInNature.getText());
+        // Instantiate the Mood class and call the moodTipsButtonClick method
+        Mood mood = new Mood();
+        mood.moodTipsButtonClick(moodLevel.getText(), socialiseRegurlaly.getText(), unitsOfAlcohol.getText(), hoursInNature.getText());
     }//GEN-LAST:event_moodTipsActionPerformed
 
     /**
