@@ -21,7 +21,7 @@ public class MoodGUI extends javax.swing.JFrame implements ActionListener {
      * Creates new form MoodGUI
      */
     private UserGUI userGUI;
-    private static final String FILE_NAME = "mood.txt";
+    private static final String FILE_NAME = "mood";
 
     public MoodGUI(UserGUI userGUI) {
         initComponents();
@@ -205,53 +205,9 @@ public class MoodGUI extends javax.swing.JFrame implements ActionListener {
 
     private void moodTipsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moodTipsActionPerformed
         // TODO add your handling code here:
-try {
-            // Get input values
-            int moodLevelValue = Integer.parseInt(moodLevel.getText());
-            String socializeRegularlyInput = socialiseRegurlaly.getText().trim();
-
-            // Validate socializeRegularlyInput
-            if (!socializeRegularlyInput.equalsIgnoreCase("Yes") && !socializeRegularlyInput.equalsIgnoreCase("No")) {
-                throw new IllegalArgumentException("Invalid input. Please enter 'Yes' or 'No' for socialising regularly.");
-            }
-
-            boolean socializeRegularlyValue = "Yes".equalsIgnoreCase(socializeRegularlyInput);
-            int unitsOfAlcoholValue = Integer.parseInt(unitsOfAlcohol.getText());
-            int hoursInNatureValue = Integer.parseInt(hoursInNature.getText());
-
-            // Create an instance of Mood
-            Mood mood = new Mood();
-
-            // Generate mood tips
-            String tips = mood.generateMoodTips(moodLevelValue, socializeRegularlyValue, unitsOfAlcoholValue, hoursInNatureValue);
-
-            // Display the tips using JOptionPane
-            JOptionPane.showMessageDialog(this, tips);
-
-            // Attempt to write the generated tips to a file
-                try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_NAME, true))) {
-                    // Write the generated tips to the file
-                    writer.write(tips);
-
-                    // Add a newline to separate sets of tips in the file
-                    writer.newLine();
-                } catch (IOException ex) {
-                    // Handle any IOException that might occur during file writing
-                    ex.printStackTrace(); // Print the stack trace to the console (for debugging purposes)
-                }
-
-            // Print file information
-            File file = new File(FILE_NAME);
-            String filePath = file.getAbsolutePath();
-            JOptionPane.showMessageDialog(this, "Tips written to file: " + FILE_NAME + "\nFile path: " + filePath);
-
-        } catch(NumberFormatException ex){
-            // Handle the case where the input is not a valid number
-            JOptionPane.showMessageDialog(this, "Invalid input. Please enter numeric values for mood level, alcohol units, and hours in nature.");
-        } catch(IllegalArgumentException ex){
-            // Handle the case where socialiseRegularlyInput is not 'Yes' or 'No'
-            JOptionPane.showMessageDialog(this, ex.getMessage());
-        }
+        
+    Mood mood = new Mood();
+    mood.moodTipsButtonClick(moodLevel.getText(), socialiseRegurlaly.getText(), unitsOfAlcohol.getText(), hoursInNature.getText());
     }//GEN-LAST:event_moodTipsActionPerformed
 
     /**

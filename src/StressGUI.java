@@ -1,7 +1,6 @@
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JOptionPane;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -23,12 +22,8 @@ public class StressGUI extends javax.swing.JFrame implements ActionListener{
     public StressGUI(UserGUI userGUI){
         initComponents();
         this.userGUI = userGUI;
-        stressTips.addActionListener((ActionListener) this);
     }
 
-    private StressGUI(){
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -81,6 +76,11 @@ public class StressGUI extends javax.swing.JFrame implements ActionListener{
 
         stressTips.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         stressTips.setText("Generate Tips");
+        stressTips.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stressTipsActionPerformed(evt);
+            }
+        });
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/stress-icon-4.jpg"))); // NOI18N
 
@@ -171,51 +171,10 @@ public class StressGUI extends javax.swing.JFrame implements ActionListener{
             @Override
     public void actionPerformed(ActionEvent e){
         if(e.getSource() == stressTips){
-            stressTipsButtonClick();
+            stressTipsActionPerformed(e);
         }
     }
-    
-    private void stressTipsButtonClick(){
-    try{
-        JOptionPane.showMessageDialog(this, generateStressTips(
-                Integer.parseInt(stressLevel.getText()),
-                "Yes".equalsIgnoreCase(easyStressed.getText()),
-                "Yes".equalsIgnoreCase(stressHelp.getText())
-        ));
-    } catch(NumberFormatException ex){
-        JOptionPane.showMessageDialog(null, "Please enter a valid number for stress level.");
-    }
-} 
-    private String generateStressTips(int stressLevel, boolean easyStressed, boolean stressHelp){
-    StringBuilder tipsBuilder = new StringBuilder();
 
-    // Stress Level Tips
-    if(stressLevel >= 7){
-        tipsBuilder.append("Your stress level is high. Consider taking some time for relaxation and stress reduction activities. \n");
-    } else if(stressLevel >= 4) {
-        tipsBuilder.append("Your stress level is moderate. Try incorporating stress-relief techniques into your routine. \n");
-    } else{
-        tipsBuilder.append("You're doing well in managing stress. Keep up the good work! \n");
-    }
-
-    // Easy Stressed Tips
-    if(!easyStressed){
-        tipsBuilder.append("It seems you are easily stressed. Practice mindfulness and deep breathing to manage stress more effectively. \n");
-    } else{
-        tipsBuilder.append("Even People who handle stressful situations well have their limits. Be mindful of your situations and try not to take on more than you can handle. \n");
-    }
-
-    // Stress Help Tips
-    if (stressHelp){
-        tipsBuilder.append("It is great that you have someone around you to talk to. You should use this invaluable resource whenever you need. \n");
-    } else{
-        tipsBuilder.append("\nHaving someone to rely on when things get stressful is a fundamental part of managing stress" + '\n'
-        + "You can even reach out to a professional councelling at https://www.iacp.ie/ '\n");
-    }
-
-    return tipsBuilder.toString();
-}
-    
     
     private void btnMainMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMainMenuActionPerformed
         // TODO add your handling code here:
@@ -230,6 +189,13 @@ public class StressGUI extends javax.swing.JFrame implements ActionListener{
     private void stressLevelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stressLevelActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_stressLevelActionPerformed
+
+    private void stressTipsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stressTipsActionPerformed
+        // TODO add your handling code here:
+        
+    Stress stress = new Stress();
+    stress.stressTipsButtonClick(stressLevel.getText(), easyStressed.getText(), stressHelp.getText());
+    }//GEN-LAST:event_stressTipsActionPerformed
 
     /**
      * @param args the command line arguments
