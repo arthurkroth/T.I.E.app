@@ -18,6 +18,12 @@ public class FeedBack {
     private boolean wouldUseAgain = true; 
     private boolean achievedGoals = true;
     private String feedbackText; 
+    private User user; // Add this line
+
+    // Constructor that takes a User instance
+    public FeedBack(User user) {
+        this.user = user;
+    }
     
     /**
      * Sets the rating given by the user.
@@ -58,13 +64,13 @@ public class FeedBack {
      public String processFeedback() {
 if ((rating >= 4) && (wouldUseAgain || achievedGoals)) {
         // Positive feedback
-        return "Thank you for your positive feedback! Your form has been sent to the team.";
+        return "Thank you, " + user.getUserName() + " for your positive feedback! Your form has been sent to the team.";
     } else if (!(wouldUseAgain && achievedGoals)) {
         // Negative feedback (both are answered with "No")
-        return "We're sorry to hear that. We will take your feedback into account to improve our app.";
+        return "We're sorry to hear that, " + user.getUserName() + " We will take your feedback into account to improve our app.";
     } else {
         // Default or other cases
-        return "Thank you for your feedback.";
+        return "Thank you for your feedback." + user.getUserName();
     }
      }
 }

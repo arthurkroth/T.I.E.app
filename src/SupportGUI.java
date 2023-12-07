@@ -23,7 +23,7 @@ public class SupportGUI extends javax.swing.JFrame {
     public SupportGUI(UserGUI userGUI) {
         initComponents();
         this.userGUI = userGUI;
-        feedBack = new FeedBack();   
+        feedBack = new FeedBack(User.getInstance());   
     }
      
 
