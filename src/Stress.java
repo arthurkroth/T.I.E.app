@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author micha
+ * @author Michael McCreary - x22171363
  */
 public class Stress {
     
